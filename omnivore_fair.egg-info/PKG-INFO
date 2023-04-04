@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: omnivore-fair
+Version: 1.1
+Home-page: https://github.com/facebookresearch/omnivore
+Author: FAIR
+License: CC BY-NC 4.0
+Provides-Extra: dev
+License-File: LICENSE
+License-File: NOTICE
