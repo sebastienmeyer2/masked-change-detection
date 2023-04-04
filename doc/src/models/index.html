@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.models API documentation</title>
+<meta name="description" content="Convolutional and Transfomer models for change point detection on satellite images." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.models</code></h1>
+</header>
+<section id="section-intro">
+<p>Convolutional and Transfomer models for change point detection on satellite images.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Convolutional and Transfomer models for change point detection on satellite images.&#34;&#34;&#34;
+
+
+from .clustering import run_clustering
+from .cva import run_cva
+from .fresunet import FresUNet
+from .omnimae import OmniMAEPair, OmniMAEFresUNet, OmniMAECNN, load_pretrained_model
+from .trainer import train
+
+
+__all__ = [
+    &#34;FresUNet&#34;,
+    &#34;OmniMAEPair&#34;,
+    &#34;OmniMAEFresUNet&#34;,
+    &#34;OmniMAECNN&#34;,
+    &#34;load_pretrained_model&#34;,
+    &#34;run_clustering&#34;,
+    &#34;run_cva&#34;,
+    &#34;train&#34;
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="src.models.clustering" href="clustering.html">src.models.clustering</a></code></dt>
+<dd>
+<div class="desc"><p>Model based on PCA and clustering.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.cva" href="cva.html">src.models.cva</a></code></dt>
+<dd>
+<div class="desc"><p>Change Vector Analysis.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.fresunet" href="fresunet.html">src.models.fresunet</a></code></dt>
+<dd>
+<div class="desc"><p>FresUNet model …</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.images_to_video" href="images_to_video.html">src.models.images_to_video</a></code></dt>
+<dd>
+<div class="desc"><p>Convert pair of images to a fake video for OmniMAE.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.omnimae" href="omnimae.html">src.models.omnimae</a></code></dt>
+<dd>
+<div class="desc"><p>OmniMAE for image reconstruction and change detection.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.omnimae_loss" href="omnimae_loss.html">src.models.omnimae_loss</a></code></dt>
+<dd>
+<div class="desc"><p>Compute the loss, patchify or unpatchify results from OmniMAE.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models.trainer" href="trainer.html">src.models.trainer</a></code></dt>
+<dd>
+<div class="desc"><p>Trainign utilities for torch models.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.models.load_pretrained_model"><code class="name flex">
+<span>def <span class="ident">load_pretrained_model</span></span>(<span>device='cuda')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load checkpoint of OmniMAE.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_pretrained_model(device=&#34;cuda&#34;):
+    &#34;&#34;&#34;Load checkpoint of OmniMAE.&#34;&#34;&#34;
+    model = vit_base_mae_pretraining()
+
+    model = model.to(device)
+    model = model.eval()
+
+    return model</code></pre>
+</details>
+</dd>
+<dt id="src.models.run_clustering"><code class="name flex">
+<span>def <span class="ident">run_clustering</span></span>(<span>img_1, img_2, img_height=224, img_width=224, components=2, threshold=100)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run_clustering(img_1, img_2, img_height=224, img_width=224, components=2, threshold=100):
+
+    # Convert to arrays if needed
+    if isinstance(img_1, torch.Tensor):
+
+        img_1 = img_1.squeeze().detach().cpu().numpy()
+        img_2 = img_2.squeeze().detach().cpu().numpy()
+
+    # Transpose if needed
+    if img_1.shape[0] &lt;= 13:  # channels first
+
+        img_1 = img_1.transpose((1, 2, 0))
+        img_2 = img_2.transpose((1, 2, 0))
+
+    # Resize Images
+    new_size = np.asarray(img_1.shape) / 5
+    new_size = new_size.astype(int) * 5
+    img_1 = cv2.resize(img_1, (new_size[0], new_size[1])).astype(int)
+    img_2 = cv2.resize(img_2, (new_size[0], new_size[1])).astype(int)
+
+    # Difference Image
+    img_diff = abs(img_1 - img_2)[:, :, 1]
+
+    with warnings.catch_warnings():
+
+        warnings.simplefilter(&#34;ignore&#34;, category=RuntimeWarning)
+
+        pca = PCA()
+        vector_set, mean_vec = find_vector_set(img_diff, new_size)
+        pca.fit(vector_set)
+        evs = pca.components_
+
+    fvs = find_fvs(evs, img_diff, mean_vec, new_size)
+
+    # Compute change map
+    least_index, change_map = clustering(fvs, components, new_size)
+
+    change_map[change_map == least_index] = 255
+    change_map[change_map != 255] = 0
+    change_map = change_map.astype(np.uint8)
+
+    change_map_resize = cv2.resize(change_map, (img_height, img_width))
+
+    # Closing / opening
+    kernel = skimage.morphology.disk(6)
+
+    close_map = cv2.morphologyEx(change_map, cv2.MORPH_CLOSE, kernel)
+    close_map_resize = cv2.resize(close_map, (img_height, img_width))
+
+    open_map = cv2.morphologyEx(close_map, cv2.MORPH_OPEN, kernel)
+    open_map_resize = cv2.resize(open_map, (img_height, img_width))
+
+    # Apply thresholding
+    change_map_bin = apply_fixed_thresholding(
+        change_map_resize, threshold=threshold, fill_value=1
+    )
+    close_map_bin = apply_fixed_thresholding(
+        close_map_resize, threshold=threshold, fill_value=1
+    )
+    open_map_bin = apply_fixed_thresholding(
+        open_map_resize, threshold=threshold, fill_value=1
+    )
+
+    return change_map_bin, close_map_bin, open_map_bin</code></pre>
+</details>
+</dd>
+<dt id="src.models.run_cva"><code class="name flex">
+<span>def <span class="ident">run_cva</span></span>(<span>img_1, img_2, window_size=4, percentile=95)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run_cva(img_1, img_2, window_size=4, percentile=95):
+
+    # Convert to arrays if needed
+    if isinstance(img_1, torch.Tensor):
+
+        img_1 = img_1.squeeze().detach().cpu().numpy()
+        img_2 = img_2.squeeze().detach().cpu().numpy()
+
+    # Transpose if needed
+    if img_1.shape[0] &lt;= 13:  # channels first
+
+        img_1 = img_1.transpose((1, 2, 0))
+        img_2 = img_2.transpose((1, 2, 0))
+
+    # Normalize the features (separate for both images)
+    img_1_mean = np.mean(img_1, axis=(0, 1))
+    img_1_std = np.std(img_1, axis=(0, 1))
+    img_1_scale = (img_1 - img_1_mean) / img_1_std
+
+    img_2_mean = np.mean(img_2, axis=(0, 1))
+    img_2_std = np.std(img_2, axis=(0, 1))
+    img_2_scale = (img_2 - img_2_mean) / img_2_std
+
+    # Compute distance between the two normalized vectors
+    img_diff = np.abs(img_1_scale - img_2_scale)
+
+    change_map = np.linalg.norm(img_diff, axis=2)
+
+    # Rescale change map
+    change_map_scale = rescale_zero_one(change_map)
+
+    # Median filtering
+    change_map_flt = median_filter(change_map_scale, window_size=window_size)
+
+    # Binary conversion
+    change_map_bin = apply_percentile_thresholding(change_map_flt, percentile=percentile)
+
+    return change_map_bin</code></pre>
+</details>
+</dd>
+<dt id="src.models.train"><code class="name flex">
+<span>def <span class="ident">train</span></span>(<span>model, train_loader, criterion, device='cuda', n_epochs=50)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def train(model, train_loader, criterion, device=&#34;cuda&#34;, n_epochs=50):
+
+    optimizer = torch.optim.Adam(model.parameters(), weight_decay=1e-4)
+
+    scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, 0.95)
+
+    pbar = tqdm(range(n_epochs))
+
+    for epoch_index in pbar:
+
+        model.train()
+
+        epoch_loss = 0.
+
+        for batch in train_loader:
+
+            # Read data
+            img_1, img_2, label = batch
+
+            img_1 = img_1.float().to(device)
+            img_2 = img_2.float().to(device)
+            label = label.to(device).long()
+
+            # Predict with the model
+            optimizer.zero_grad()
+            output = model(img_1, img_2)
+
+            # Compute loss
+            loss = criterion(output, label)
+            epoch_loss += loss.item()
+
+            # Optimization step
+            loss.backward()
+            optimizer.step()
+
+        epoch_loss /= len(train_loader)
+
+        pbar.set_description(f&#34;Epoch {epoch_index+1}/{n_epochs}; Loss {epoch_loss:.6f}&#34;)
+
+        scheduler.step()
+
+        model.eval()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.models.FresUNet"><code class="flex name class">
+<span>class <span class="ident">FresUNet</span></span>
+<span>(</span><span>input_nbr, label_nbr)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>FresUNet segmentation network.</p>
+<p>Init FresUNet fields.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FresUNet(nn.Module):
+    &#34;&#34;&#34;FresUNet segmentation network.&#34;&#34;&#34;
+
+    def __init__(self, input_nbr, label_nbr):
+        &#34;&#34;&#34;Init FresUNet fields.&#34;&#34;&#34;
+
+        super().__init__()
+
+        self.input_nbr = input_nbr
+
+        cur_depth = input_nbr
+
+        base_depth = 8
+
+        # Encoding stage 1
+        self.encres1_1 = BasicBlock_ss(cur_depth, planes=base_depth)
+        cur_depth = base_depth
+        d1 = base_depth
+        self.encres1_2 = BasicBlock_ss(cur_depth, subsamp=2)
+        cur_depth *= 2
+
+        # Encoding stage 2
+        self.encres2_1 = BasicBlock_ss(cur_depth)
+        d2 = cur_depth
+        self.encres2_2 = BasicBlock_ss(cur_depth, subsamp=2)
+        cur_depth *= 2
+
+        # Encoding stage 3
+        self.encres3_1 = BasicBlock_ss(cur_depth)
+        d3 = cur_depth
+        self.encres3_2 = BasicBlock_ss(cur_depth, subsamp=2)
+        cur_depth *= 2
+
+        # Encoding stage 4
+        self.encres4_1 = BasicBlock_ss(cur_depth)
+        d4 = cur_depth
+        self.encres4_2 = BasicBlock_ss(cur_depth, subsamp=2)
+        cur_depth *= 2
+
+        # Decoding stage 4
+        self.decres4_1 = BasicBlock_ss(cur_depth)
+        self.decres4_2 = BasicBlock_us(cur_depth, upsamp=2)
+        cur_depth = int(cur_depth/2)
+
+        # Decoding stage 3
+        self.decres3_1 = BasicBlock_ss(cur_depth + d4, planes=cur_depth)
+        self.decres3_2 = BasicBlock_us(cur_depth, upsamp=2)
+        cur_depth = int(cur_depth/2)
+
+        # Decoding stage 2
+        self.decres2_1 = BasicBlock_ss(cur_depth + d3, planes=cur_depth)
+        self.decres2_2 = BasicBlock_us(cur_depth, upsamp=2)
+        cur_depth = int(cur_depth/2)
+
+        # Decoding stage 1
+        self.decres1_1 = BasicBlock_ss(cur_depth + d2, planes=cur_depth)
+        self.decres1_2 = BasicBlock_us(cur_depth, upsamp=2)
+        cur_depth = int(cur_depth/2)
+
+        # Output
+        self.coupling = nn.Conv2d(cur_depth + d1, label_nbr, kernel_size=1)
+        self.sm = nn.LogSoftmax(dim=1)
+
+    def forward(self, x1, x2):
+
+        x = torch.cat((x1, x2), 1)
+
+        # pad5 = ReplicationPad2d((0, x53.size(3) - x5d.size(3), 0, x53.size(2) - x5d.size(2)))
+
+        s1_1 = x.size()
+        x1 = self.encres1_1(x)
+        x = self.encres1_2(x1)
+
+        s2_1 = x.size()
+        x2 = self.encres2_1(x)
+        x = self.encres2_2(x2)
+
+        s3_1 = x.size()
+        x3 = self.encres3_1(x)
+        x = self.encres3_2(x3)
+
+        s4_1 = x.size()
+        x4 = self.encres4_1(x)
+        x = self.encres4_2(x4)
+
+        x = self.decres4_1(x)
+        x = self.decres4_2(x)
+        s4_2 = x.size()
+        pad4 = ReplicationPad2d((0, s4_1[3] - s4_2[3], 0, s4_1[2] - s4_2[2]))
+        x = pad4(x)
+
+        # x = self.decres3_1(x)
+        x = self.decres3_1(torch.cat((x, x4), 1))
+        x = self.decres3_2(x)
+        s3_2 = x.size()
+        pad3 = ReplicationPad2d((0, s3_1[3] - s3_2[3], 0, s3_1[2] - s3_2[2]))
+        x = pad3(x)
+
+        x = self.decres2_1(torch.cat((x, x3), 1))
+        x = self.decres2_2(x)
+        s2_2 = x.size()
+        pad2 = ReplicationPad2d((0, s2_1[3] - s2_2[3], 0, s2_1[2] - s2_2[2]))
+        x = pad2(x)
+
+        x = self.decres1_1(torch.cat((x, x2), 1))
+        x = self.decres1_2(x)
+        s1_2 = x.size()
+        pad1 = ReplicationPad2d((0, s1_1[3] - s1_2[3], 0, s1_1[2] - s1_2[2]))
+        x = pad1(x)
+
+        x = self.coupling(torch.cat((x, x1), 1))
+        x = self.sm(x)
+
+        return x</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.models.FresUNet.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x1, x2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x1, x2):
+
+    x = torch.cat((x1, x2), 1)
+
+    # pad5 = ReplicationPad2d((0, x53.size(3) - x5d.size(3), 0, x53.size(2) - x5d.size(2)))
+
+    s1_1 = x.size()
+    x1 = self.encres1_1(x)
+    x = self.encres1_2(x1)
+
+    s2_1 = x.size()
+    x2 = self.encres2_1(x)
+    x = self.encres2_2(x2)
+
+    s3_1 = x.size()
+    x3 = self.encres3_1(x)
+    x = self.encres3_2(x3)
+
+    s4_1 = x.size()
+    x4 = self.encres4_1(x)
+    x = self.encres4_2(x4)
+
+    x = self.decres4_1(x)
+    x = self.decres4_2(x)
+    s4_2 = x.size()
+    pad4 = ReplicationPad2d((0, s4_1[3] - s4_2[3], 0, s4_1[2] - s4_2[2]))
+    x = pad4(x)
+
+    # x = self.decres3_1(x)
+    x = self.decres3_1(torch.cat((x, x4), 1))
+    x = self.decres3_2(x)
+    s3_2 = x.size()
+    pad3 = ReplicationPad2d((0, s3_1[3] - s3_2[3], 0, s3_1[2] - s3_2[2]))
+    x = pad3(x)
+
+    x = self.decres2_1(torch.cat((x, x3), 1))
+    x = self.decres2_2(x)
+    s2_2 = x.size()
+    pad2 = ReplicationPad2d((0, s2_1[3] - s2_2[3], 0, s2_1[2] - s2_2[2]))
+    x = pad2(x)
+
+    x = self.decres1_1(torch.cat((x, x2), 1))
+    x = self.decres1_2(x)
+    s1_2 = x.size()
+    pad1 = ReplicationPad2d((0, s1_1[3] - s1_2[3], 0, s1_1[2] - s1_2[2]))
+    x = pad1(x)
+
+    x = self.coupling(torch.cat((x, x1), 1))
+    x = self.sm(x)
+
+    return x</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.models.OmniMAECNN"><code class="flex name class">
+<span>class <span class="ident">OmniMAECNN</span></span>
+<span>(</span><span>omnimae_pair, kernel_size=5, patch_shape=[2, 16, 16], nb_channels=3, img_height=224, img_width=224)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Take a pair of images as input and uses OmniMAE to perform change detection.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OmniMAECNN(Module):
+    &#34;&#34;&#34;Take a pair of images as input and uses OmniMAE to perform change detection.&#34;&#34;&#34;
+    def __init__(
+        self, omnimae_pair, kernel_size=5, patch_shape=[2, 16, 16], nb_channels=3, img_height=224,
+        img_width=224
+    ):
+
+        super().__init__()
+
+        # Parameters
+        self.kernel_size = kernel_size
+
+        self.patch_shape = patch_shape
+        self.nb_channels = nb_channels
+        self.img_height = 224
+        self.img_width = 224
+
+        # Use OmniMAE as it is (freeze its parameters)
+        self.omnimae_pair = omnimae_pair
+
+        # Create a convolutional part which will output the change map
+        self.cnn = CNNHead(
+            kernel_size=kernel_size, nb_channels=nb_channels, img_height=img_height,
+            img_width=img_width
+        )
+
+    def forward(self, img_1, img_2):
+
+        # Perform pass with OmniMAE
+        output, _, _ = self.omnimae_pair(img_1, img_2)
+
+        # Reshape the decoded patches to channels
+        output = output.reshape(
+            (*output.shape[:-1], output.shape[-1] // self.nb_channels, self.nb_channels)
+        )
+
+        # Unpatchify the predicted patches
+        output = unpatchify(
+            output, patch_shape=self.patch_shape, nb_channels=self.nb_channels,
+            img_height=self.img_height, img_width=self.img_width
+        )
+
+        # Compute the difference of images
+        first_output = output[:, :, 0, ...]
+        last_output = output[:, :, 2, ...]
+
+        output = (last_output - first_output).abs()
+
+        # Output a change map
+        output = self.cnn(output)
+
+        return output</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.models.OmniMAECNN.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, img_1, img_2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, img_1, img_2):
+
+    # Perform pass with OmniMAE
+    output, _, _ = self.omnimae_pair(img_1, img_2)
+
+    # Reshape the decoded patches to channels
+    output = output.reshape(
+        (*output.shape[:-1], output.shape[-1] // self.nb_channels, self.nb_channels)
+    )
+
+    # Unpatchify the predicted patches
+    output = unpatchify(
+        output, patch_shape=self.patch_shape, nb_channels=self.nb_channels,
+        img_height=self.img_height, img_width=self.img_width
+    )
+
+    # Compute the difference of images
+    first_output = output[:, :, 0, ...]
+    last_output = output[:, :, 2, ...]
+
+    output = (last_output - first_output).abs()
+
+    # Output a change map
+    output = self.cnn(output)
+
+    return output</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.models.OmniMAEFresUNet"><code class="flex name class">
+<span>class <span class="ident">OmniMAEFresUNet</span></span>
+<span>(</span><span>input_nbr, label_nbr, nb_channels=3, patch_shape=[2, 16, 16], img_height=224, img_width=224, omnimae_pair=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Put together OmniMAE and FresUNet for change detection.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OmniMAEFresUNet(Module):
+    &#34;&#34;&#34;Put together OmniMAE and FresUNet for change detection.&#34;&#34;&#34;
+    def __init__(
+        self, input_nbr, label_nbr, nb_channels=3, patch_shape=[2, 16, 16], img_height=224,
+        img_width=224, omnimae_pair=None
+    ):
+
+        super().__init__()
+
+        # Parameters
+        self.nb_channels = nb_channels
+        self.patch_shape = patch_shape
+        self.img_height = img_height
+        self.img_width = img_width
+
+        # Models
+        self.omnimae_pair = omnimae_pair
+
+        self.fresunet = FresUNet(input_nbr, label_nbr)
+
+    def forward(self, x1, x2):
+
+        if self.omnimae_pair is not None:
+
+            # Pass OmniMAE
+            output, _, _ = self.omnimae_pair(x1, x2)
+
+            # Reshape the decoded patches to channels
+            output = output.reshape(
+                (*output.shape[:-1], output.shape[-1] // self.nb_channels, self.nb_channels)
+            )
+
+            # Unpatchify the predicted patches
+            output = unpatchify(
+                output, patch_shape=self.patch_shape, nb_channels=self.nb_channels,
+                img_height=self.img_height, img_width=self.img_width
+            )
+
+            # Retrieve images
+            img_1 = output[:, :, 0, :, ...]
+            img_2 = output[:, :, 2, :, ...]
+
+        x = self.fresunet(img_1, img_2)
+
+        return x</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.models.OmniMAEFresUNet.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, x1, x2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, x1, x2):
+
+    if self.omnimae_pair is not None:
+
+        # Pass OmniMAE
+        output, _, _ = self.omnimae_pair(x1, x2)
+
+        # Reshape the decoded patches to channels
+        output = output.reshape(
+            (*output.shape[:-1], output.shape[-1] // self.nb_channels, self.nb_channels)
+        )
+
+        # Unpatchify the predicted patches
+        output = unpatchify(
+            output, patch_shape=self.patch_shape, nb_channels=self.nb_channels,
+            img_height=self.img_height, img_width=self.img_width
+        )
+
+        # Retrieve images
+        img_1 = output[:, :, 0, :, ...]
+        img_2 = output[:, :, 2, :, ...]
+
+    x = self.fresunet(img_1, img_2)
+
+    return x</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.models.OmniMAEPair"><code class="flex name class">
+<span>class <span class="ident">OmniMAEPair</span></span>
+<span>(</span><span>omnimae, video_ordering='1221', patch_shape=[2, 16, 16], nb_channels=3, masking_method='none', masking_proportion=0.5, img_height=224, img_width=224)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Take a pair of images as input and pass them through OmniMAE as a sequence.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OmniMAEPair(Module):
+    &#34;&#34;&#34;Take a pair of images as input and pass them through OmniMAE as a sequence.&#34;&#34;&#34;
+    def __init__(
+        self, omnimae, video_ordering=&#34;1221&#34;, patch_shape=[2, 16, 16], nb_channels=3,
+        masking_method=&#34;none&#34;, masking_proportion=0.5, img_height=224, img_width=224
+    ):
+
+        super().__init__()
+
+        # Parameters
+        self.video_ordering = video_ordering
+        self.patch_shape = patch_shape
+        self.masking_method = masking_method
+        self.masking_proportion = masking_proportion
+
+        self.nb_channels = nb_channels
+        self.img_height = img_height
+        self.img_width = img_width
+
+        # Use OmniMAE as it is (freeze its parameters)
+        self.omnimae = omnimae
+        for param in self.omnimae.parameters():
+            param.requires_grad = False
+
+        # Finetune more layers if needed
+        if self.nb_channels != 3:
+
+            # Extend first layer
+            layer = self.omnimae.trunk.patch_embed.proj._modules[&#34;1&#34;]
+
+            new_layer = Conv3d(
+                in_channels=self.nb_channels,
+                kernel_size=[2, 16, 16],
+                out_channels=768,
+                stride=[2, 16, 16],
+            )
+
+            new_layer.weight.requires_grad = False
+
+            copy_weights = 0
+
+            new_layer.weight[:, :layer.in_channels, :, :] = layer.weight.clone()
+
+            for i in range(self.nb_channels - layer.in_channels):
+                channel = layer.in_channels + i
+                new_layer.weight[:, channel:channel+1, :, :] = \
+                    layer.weight[:, copy_weights:copy_weights+1, :, :].clone()
+            new_layer.weight = nn.Parameter(new_layer.weight)
+
+            self.omnimae.trunk.patch_embed.proj._modules[&#34;1&#34;] = new_layer
+
+            # Extend last layer
+            layer = self.omnimae.head
+
+            new_layer = Linear(
+                in_features=384,
+                out_features=self.nb_channels * 512,
+                bias=True
+            )
+
+            new_layer.weight.requires_grad = False
+
+            copy_weights = 0
+
+            new_layer.weight[:layer.out_features, :] = layer.weight.clone()
+
+            for i in range(self.nb_channels - 3):
+                new_layer.weight[(3+i)*512:(3+i+1)*512, :] = \
+                    layer.weight[:512, :].clone()
+            new_layer.weight = nn.Parameter(new_layer.weight)
+
+            self.omnimae.head = new_layer
+
+    def finetune_first_last_layers(self):
+
+        self.omnimae.trunk.patch_embed.proj._modules[&#34;1&#34;].weight.requires_grad = True
+        self.omnimae.head.weight.requires_grad = True
+
+    def forward(self, img_1, img_2):
+
+        # Repeat the input if needed
+        if img_1.ndim == 3:
+            img_1 = einops.repeat(img_1, &#34;c h w -&gt; b c h w&#34;, b=1)
+            img_2 = einops.repeat(img_2, &#34;c h w -&gt; b c h w&#34;, b=1)
+
+        # Create the video
+        video, true_video = create_video(img_1, img_2, video_ordering=self.video_ordering)
+
+        # Create the associated mask
+        mask = create_mask(
+            batch_size=video.shape[0], video_ordering=self.video_ordering,
+            patch_shape=self.patch_shape, img_height=self.img_height, img_width=self.img_width,
+            masking_method=self.masking_method, masking_proportion=self.masking_proportion
+        )
+
+        # Forward the OmniMAE part
+        _, decoder_patch_features = self.omnimae.trunk(video, mask=mask)
+        output = self.omnimae.head(decoder_patch_features)
+
+        return output, true_video, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.models.OmniMAEPair.finetune_first_last_layers"><code class="name flex">
+<span>def <span class="ident">finetune_first_last_layers</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def finetune_first_last_layers(self):
+
+    self.omnimae.trunk.patch_embed.proj._modules[&#34;1&#34;].weight.requires_grad = True
+    self.omnimae.head.weight.requires_grad = True</code></pre>
+</details>
+</dd>
+<dt id="src.models.OmniMAEPair.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, img_1, img_2) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, img_1, img_2):
+
+    # Repeat the input if needed
+    if img_1.ndim == 3:
+        img_1 = einops.repeat(img_1, &#34;c h w -&gt; b c h w&#34;, b=1)
+        img_2 = einops.repeat(img_2, &#34;c h w -&gt; b c h w&#34;, b=1)
+
+    # Create the video
+    video, true_video = create_video(img_1, img_2, video_ordering=self.video_ordering)
+
+    # Create the associated mask
+    mask = create_mask(
+        batch_size=video.shape[0], video_ordering=self.video_ordering,
+        patch_shape=self.patch_shape, img_height=self.img_height, img_width=self.img_width,
+        masking_method=self.masking_method, masking_proportion=self.masking_proportion
+    )
+
+    # Forward the OmniMAE part
+    _, decoder_patch_features = self.omnimae.trunk(video, mask=mask)
+    output = self.omnimae.head(decoder_patch_features)
+
+    return output, true_video, mask</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="../index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="src.models.clustering" href="clustering.html">src.models.clustering</a></code></li>
+<li><code><a title="src.models.cva" href="cva.html">src.models.cva</a></code></li>
+<li><code><a title="src.models.fresunet" href="fresunet.html">src.models.fresunet</a></code></li>
+<li><code><a title="src.models.images_to_video" href="images_to_video.html">src.models.images_to_video</a></code></li>
+<li><code><a title="src.models.omnimae" href="omnimae.html">src.models.omnimae</a></code></li>
+<li><code><a title="src.models.omnimae_loss" href="omnimae_loss.html">src.models.omnimae_loss</a></code></li>
+<li><code><a title="src.models.trainer" href="trainer.html">src.models.trainer</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.models.load_pretrained_model" href="#src.models.load_pretrained_model">load_pretrained_model</a></code></li>
+<li><code><a title="src.models.run_clustering" href="#src.models.run_clustering">run_clustering</a></code></li>
+<li><code><a title="src.models.run_cva" href="#src.models.run_cva">run_cva</a></code></li>
+<li><code><a title="src.models.train" href="#src.models.train">train</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.models.FresUNet" href="#src.models.FresUNet">FresUNet</a></code></h4>
+<ul class="">
+<li><code><a title="src.models.FresUNet.forward" href="#src.models.FresUNet.forward">forward</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.models.OmniMAECNN" href="#src.models.OmniMAECNN">OmniMAECNN</a></code></h4>
+<ul class="">
+<li><code><a title="src.models.OmniMAECNN.forward" href="#src.models.OmniMAECNN.forward">forward</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.models.OmniMAEFresUNet" href="#src.models.OmniMAEFresUNet">OmniMAEFresUNet</a></code></h4>
+<ul class="">
+<li><code><a title="src.models.OmniMAEFresUNet.forward" href="#src.models.OmniMAEFresUNet.forward">forward</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.models.OmniMAEPair" href="#src.models.OmniMAEPair">OmniMAEPair</a></code></h4>
+<ul class="">
+<li><code><a title="src.models.OmniMAEPair.finetune_first_last_layers" href="#src.models.OmniMAEPair.finetune_first_last_layers">finetune_first_last_layers</a></code></li>
+<li><code><a title="src.models.OmniMAEPair.forward" href="#src.models.OmniMAEPair.forward">forward</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

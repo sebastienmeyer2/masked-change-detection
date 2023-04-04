@@ -1,0 +1,5 @@
+pandas
+scipy
+scikit-image
+scikit-learn
+matplotlib

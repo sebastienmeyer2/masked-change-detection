@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.datasets API documentation</title>
+<meta name="description" content="Reconstruction and change detection datasets." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.datasets</code></h1>
+</header>
+<section id="section-intro">
+<p>Reconstruction and change detection datasets.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Reconstruction and change detection datasets.&#34;&#34;&#34;
+
+
+from .onera_dataset import OneraReconstructionDataset, OneraChangeDetectionDataset
+from .sztaki_dataset import SztakiReconstructionDataset
+
+
+__all__ = [
+    &#34;OneraReconstructionDataset&#34;,
+    &#34;OneraChangeDetectionDataset&#34;,
+    &#34;SztakiReconstructionDataset&#34;
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="src.datasets.onera_dataset" href="onera_dataset.html">src.datasets.onera_dataset</a></code></dt>
+<dd>
+<div class="desc"><p>Load and prepare OSCD dataset for reconstruction or change detection.</p></div>
+</dd>
+<dt><code class="name"><a title="src.datasets.sztaki_dataset" href="sztaki_dataset.html">src.datasets.sztaki_dataset</a></code></dt>
+<dd>
+<div class="desc"><p>Load and prepare SZTAKI dataset for reconstruction.</p></div>
+</dd>
+<dt><code class="name"><a title="src.datasets.transforms" href="transforms.html">src.datasets.transforms</a></code></dt>
+<dd>
+<div class="desc"><p>Transforms classes and functions.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="src.datasets.OneraChangeDetectionDataset"><code class="flex name class">
+<span>class <span class="ident">OneraChangeDetectionDataset</span></span>
+<span>(</span><span>data_dir='data', dataset_name='OSCD', imgs_1_dir='imgs_1', imgs_2_dir='imgs_2', train=True, bands_name='rgb', transform=None, patch_size=224, normalize_imgs=True, fp_modifier=10)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dataset used for change detection with OSCD data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneraChangeDetectionDataset(Dataset):
+    &#34;&#34;&#34;Dataset used for change detection with OSCD data.&#34;&#34;&#34;
+
+    def __init__(
+        self, data_dir=&#34;data&#34;, dataset_name=&#34;OSCD&#34;, imgs_1_dir=&#34;imgs_1&#34;, imgs_2_dir=&#34;imgs_2&#34;,
+        train=True, bands_name=&#34;rgb&#34;, transform=None, patch_size=224, normalize_imgs=True,
+        fp_modifier=10
+    ):
+
+        # Parameters
+        self.train = train
+
+        self.bands = get_bands(bands_name)
+
+        self.transform = transform
+
+        self.patch_size = patch_size  # compatibility
+        self.stride = int(self.patch_size / 2) - 1  # compatibility
+
+        # Check that the data directory exists
+        raise_if_no_dir(data_dir)
+
+        # Check that the ONERA dataset exists
+        data_dir = f&#34;{data_dir}/{dataset_name}&#34;
+        raise_if_no_dir(data_dir)
+
+        # Read the cities to consider
+        if train:
+            filename = f&#34;{data_dir}/train.txt&#34;
+        else:
+            filename = f&#34;{data_dir}/test.txt&#34;
+        raise_if_no_file(filename)
+
+        self.city_names = pd.read_csv(filename).columns
+
+        self.city_to_idx = {}
+        self.idx_to_city = {}
+
+        for idx, city_name in enumerate(self.city_names):
+
+            self.city_to_idx[city_name] = idx
+            self.idx_to_city[idx] = city_name
+
+        # Save paths to all images
+        self.imgs_1 = {}
+        self.imgs_2 = {}
+        self.change_maps = {}
+
+        n_pix = 0
+        true_pix = 0
+
+        self.n_patches_per_image = {}
+        self.n_patches = 0
+        self.patch_coords = []
+
+        for city_name in tqdm(self.city_names, desc=&#34;Read OSCD city data&#34;):
+
+            # Check that the city directory exists
+            city_imgs_dir = f&#34;{data_dir}/{city_name}&#34;
+            raise_if_no_dir(city_imgs_dir)
+
+            # Check that the images directories exist
+            city_imgs_1_dir = f&#34;{city_imgs_dir}/{imgs_1_dir}&#34;
+            city_imgs_2_dir = f&#34;{city_imgs_dir}/{imgs_2_dir}&#34;
+            raise_if_no_dir(city_imgs_1_dir)
+            raise_if_no_dir(city_imgs_2_dir)
+
+            # Check that the images exist
+            header_1 = os.listdir(city_imgs_1_dir)[0][:-7]
+            header_2 = os.listdir(city_imgs_2_dir)[0][:-7]
+
+            img_1_rgb = [f&#34;{city_imgs_1_dir}/{header_1}{band}.tif&#34; for band in self.bands]
+            img_2_rgb = [f&#34;{city_imgs_2_dir}/{header_2}{band}.tif&#34; for band in self.bands]
+            for filename_1, filename_2 in zip(img_1_rgb, img_2_rgb):
+                raise_if_no_file(filename_1)
+                raise_if_no_file(filename_2)
+
+            # Load the images
+            img_1_io = [io.imread(img) for img in img_1_rgb]
+            img_2_io = [io.imread(img) for img in img_2_rgb]
+
+            # Find shape to respect for first images
+            img_1_r = img_1_io[0]
+            sh = img_1_r.shape
+
+            for i in range(len(self.bands)):
+
+                img_1_band = img_1_io[i]
+
+                sh_band = img_1_band.shape
+
+                if sh_band != sh:
+
+                    # Zoom image
+                    img_1_band = zoom(img_1_band, 2)
+
+                    # Crop if necessary
+                    img_1_band = img_1_band[:sh[0], :sh[1]]
+
+                    sh_band = img_1_band.shape
+
+                    # Pad if necessary
+                    p0 = max(0, sh[0] - sh_band[0])
+                    p1 = max(0, sh[1] - sh_band[1])
+
+                    img_1_band = np.pad(img_1_band, ((0, p0), (0, p1)), &#34;edge&#34;)
+
+                img_1_io[i] = img_1_band.copy()
+
+            # Find shape to respect for last images
+            img_2_r = img_2_io[0]
+            sh = img_2_r.shape
+
+            for i in range(len(self.bands)):
+
+                img_2_band = img_2_io[i]
+
+                sh_band = img_2_band.shape
+
+                if sh_band != sh:
+
+                    # Zoom image
+                    img_2_band = zoom(img_2_band, 2)
+
+                    # Crop if necessary
+                    img_2_band = img_2_band[:sh[0], :sh[1]]
+
+                    sh_band = img_2_band.shape
+
+                    # Pad if necessary
+                    p0 = max(0, sh[0] - sh_band[0])
+                    p1 = max(0, sh[1] - sh_band[1])
+
+                    img_2_band = np.pad(img_2_band, ((0, p0), (0, p1)), &#34;edge&#34;)
+
+                img_2_io[i] = img_2_band.copy()
+
+            # Convert the images to numpy in order to concatenate the color channels
+            img_1_cat = np.stack(img_1_io, axis=2).astype(&#34;float&#34;)
+            img_2_cat = np.stack(img_2_io, axis=2).astype(&#34;float&#34;)
+
+            if normalize_imgs:
+                img_1_cat = (img_1_cat - img_1_cat.mean()) / img_1_cat.std()
+                img_2_cat = (img_2_cat - img_2_cat.mean()) / img_2_cat.std()
+
+            # Crop if necessary
+            sh1 = img_1_cat.shape
+            sh2 = img_2_cat.shape
+            img_2_cat = np.pad(
+                img_2_cat, ((0, sh1[0] - sh2[0]), (0, sh1[1] - sh2[1]), (0, 0)), &#34;edge&#34;
+            )
+
+            img_1 = img_1_cat.transpose((2, 0, 1))
+            img_2 = img_2_cat.transpose((2, 0, 1))
+
+            # Save the images
+            self.imgs_1[city_name] = torch.from_numpy(img_1)
+            self.imgs_2[city_name] = torch.from_numpy(img_2)
+
+            city_labels_dir = f&#34;{data_dir}/{city_name}&#34;
+
+            # Check that the label exists
+            label_filename = f&#34;{city_labels_dir}/cm/cm.png&#34;
+            raise_if_no_file(label_filename)
+
+            # Load the label using PIL (attention: cm is the transpose of img)
+            label = io.imread(label_filename, as_gray=True) != 0
+
+            # Save the change map
+            self.change_maps[city_name] = label
+
+            # Build patches
+            sh = label.shape
+            n_pix += np.prod(sh)
+            true_pix += label.sum()
+
+            # Calculate the number of patches
+            sh = self.imgs_1[city_name].shape
+            n1 = ceil((sh[1] - self.patch_size + 1) / self.stride)
+            n2 = ceil((sh[2] - self.patch_size + 1) / self.stride)
+            n_patches_i = n1 * n2
+            self.n_patches_per_image[city_name] = n_patches_i
+            self.n_patches += n_patches_i
+
+            # Generate path coordinates
+            for i in range(n1):
+                for j in range(n2):
+
+                    # Coordinates in (x1, x2, y1, y2)
+                    current_patch_coords = (
+                        city_name,
+                        [
+                            self.stride*i, self.stride*i + self.patch_size, self.stride*j,
+                            self.stride*j + self.patch_size
+                        ],
+                        [self.stride*(i + 1), self.stride*(j + 1)])
+                    self.patch_coords.append(current_patch_coords)
+
+        print(self.n_patches, &#34;patches&#34;, self.n_patches_per_image)
+
+        # Loss weights
+        self.weights = [fp_modifier * 2 * true_pix / n_pix, 2 * (n_pix - true_pix) / n_pix]
+
+    def get_nb_channels(self):
+
+        nb_channels = len(self.bands)
+
+        return nb_channels
+
+    def get_city_data(self, city_name):
+
+        sample = self.imgs_1[city_name], self.imgs_2[city_name], self.change_maps[city_name]
+
+        return sample
+
+    def __len__(self):
+
+        return self.n_patches
+
+    def __getitem__(self, idx):
+
+        current_patch_coords = self.patch_coords[idx]
+
+        city_name = current_patch_coords[0]
+        limits = current_patch_coords[1]
+
+        img_1 = self.imgs_1[city_name][:, limits[0]:limits[1], limits[2]:limits[3]]
+        img_2 = self.imgs_2[city_name][:, limits[0]:limits[1], limits[2]:limits[3]]
+
+        label = self.change_maps[city_name][limits[0]:limits[1], limits[2]:limits[3]]
+        label = torch.from_numpy(1*np.array(label)).float()
+
+        sample = (img_1, img_2, label)
+
+        if self.transform:
+            sample = self.transform(sample)
+
+        return sample</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="src.datasets.OneraChangeDetectionDataset.get_city_data"><code class="name flex">
+<span>def <span class="ident">get_city_data</span></span>(<span>self, city_name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_city_data(self, city_name):
+
+    sample = self.imgs_1[city_name], self.imgs_2[city_name], self.change_maps[city_name]
+
+    return sample</code></pre>
+</details>
+</dd>
+<dt id="src.datasets.OneraChangeDetectionDataset.get_nb_channels"><code class="name flex">
+<span>def <span class="ident">get_nb_channels</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_nb_channels(self):
+
+    nb_channels = len(self.bands)
+
+    return nb_channels</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="src.datasets.OneraReconstructionDataset"><code class="flex name class">
+<span>class <span class="ident">OneraReconstructionDataset</span></span>
+<span>(</span><span>data_dir='data', dataset_name='OSCD', imgs_1_dir='imgs_1_rect', imgs_2_dir='imgs_2_rect', img_1_base='', img_2_base='', bands_name='rgb', transform=None, percentiles=2, cropping_method='random', img_height=224, img_width=224, left=0, top=0, right=1, bottom=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dataset used for reconstruction with OmniMAE.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OneraReconstructionDataset(Dataset):
+    &#34;&#34;&#34;Dataset used for reconstruction with OmniMAE.&#34;&#34;&#34;
+
+    def __init__(
+        self, data_dir=&#34;data&#34;, dataset_name=&#34;OSCD&#34;, imgs_1_dir=&#34;imgs_1_rect&#34;,
+        imgs_2_dir=&#34;imgs_2_rect&#34;, img_1_base=&#34;&#34;, img_2_base=&#34;&#34;, bands_name=&#34;rgb&#34;,
+        transform=None, percentiles=2, cropping_method=&#34;random&#34;, img_height=224, img_width=224,
+        left=0, top=0, right=1, bottom=1
+    ):
+
+        # Parameters
+        self.bands = get_bands(bands_name)
+
+        self.transform = transform
+        if self.transform is None:
+            self.transform = create_reconstruction_transform()
+
+        self.percentiles = percentiles
+
+        self.cropping_method = cropping_method
+        self.img_height = img_height
+        self.img_width = img_width
+        self.left = left
+        self.top = top
+        self.right = right
+        self.bottom = bottom
+
+        # Check that the data directory exists
+        raise_if_no_dir(data_dir)
+
+        # Check that the ONERA dataset exists
+        data_dir = f&#34;{data_dir}/{dataset_name}&#34;
+        raise_if_no_dir(data_dir)
+
+        # Read the cities to consider
+        filename = f&#34;{data_dir}/all.txt&#34;
+        raise_if_no_file(filename)
+
+        self.city_names = pd.read_csv(filename).columns
+
+        self.city_to_idx = {}
+        self.idx_to_city = {}
+
+        for idx, city_name in enumerate(self.city_names):
+
+            self.city_to_idx[city_name] = idx
+            self.idx_to_city[idx] = city_name
+
+        # Save paths to all images
+        self.img_1_paths = {band: {} for band in self.bands}
+        self.img_2_paths = {band: {} for band in self.bands}
+        self.change_map_paths = {}
+
+        for city_name in self.city_names:
+
+            # Check that the city directory exists
+            city_imgs_dir = f&#34;{data_dir}/{city_name}&#34;
+            raise_if_no_dir(city_imgs_dir)
+
+            # Check that the images directories exist
+            city_imgs_1_dir = f&#34;{city_imgs_dir}/{imgs_1_dir}&#34;
+            city_imgs_2_dir = f&#34;{city_imgs_dir}/{imgs_2_dir}&#34;
+
+            # Check that the images exist
+            for band in self.bands:
+
+                img_1_band = f&#34;{city_imgs_1_dir}/{img_1_base}{band}.tif&#34;
+                img_2_band = f&#34;{city_imgs_2_dir}/{img_2_base}{band}.tif&#34;
+
+                raise_if_no_file(img_1_band)
+                raise_if_no_file(img_2_band)
+
+                self.img_1_paths[band][city_name] = img_1_band
+                self.img_2_paths[band][city_name] = img_2_band
+
+            # Check that the city directory exsits
+            city_labels_dir = f&#34;{data_dir}/{city_name}&#34;
+            raise_if_no_dir(city_labels_dir)
+
+            # Check that the label exists
+            label_filename = f&#34;{city_labels_dir}/cm/{city_name}-cm.tif&#34;
+            raise_if_no_file(label_filename)
+
+            self.change_map_paths[city_name] = label_filename
+
+        self.n_imgs = len(self.idx_to_city)
+
+    def __len__(self):
+
+        return self.n_imgs
+
+    def __getitem__(self, idx):
+
+        # Match city name
+        if isinstance(idx, int):
+            city_name = self.idx_to_city[idx]
+        else:
+            city_name = idx
+
+        # Load the images using PIL
+        img_1_pil = [Image.open(self.img_1_paths[band][city_name]) for band in self.bands]
+        img_2_pil = [Image.open(self.img_2_paths[band][city_name]) for band in self.bands]
+
+        # Convert the images to numpy in order to concatenate the color channels
+        img_1_arr = [np.asarray(img) for img in img_1_pil]
+        img_2_arr = [np.asarray(img) for img in img_2_pil]
+        img_1_cat = np.array(img_1_arr).T
+        img_2_cat = np.array(img_2_arr).T
+
+        # Perform simple equalization to improve visualization
+        img_1_scale = simple_equalization_8bit(img_1_cat, percentiles=self.percentiles)
+        img_2_scale = simple_equalization_8bit(img_2_cat, percentiles=self.percentiles)
+
+        # Perform histogram matching for correcting colors between images
+        img_2_matched = match_histograms(img_2_scale, img_1_scale, channel_axis=-1)
+
+        # Convert back to PIL images
+        img_1 = Image.fromarray(img_1_scale)
+        img_2 = Image.fromarray(img_2_matched)
+
+        # Load the label using PIL (attention: cm is the transpose of img)
+        label = Image.open(self.change_map_paths[city_name]).transpose(Image.TRANSPOSE)
+
+        # Map labels from {1, 2} to {0, 255}
+        label = 255 * np.asarray(label) - 255
+        label = Image.fromarray(label)
+
+        # Crop images and label
+        img_1_crop, img_2_crop, label_crop = crop_images(
+            [img_1, img_2, label], method=self.cropping_method, img_height=self.img_height,
+            img_width=self.img_width, left=self.left, top=self.top, right=self.right,
+            bottom=self.bottom
+        )
+
+        # Apply transforms
+        if self.transform is not None:
+            img_1_trsf, img_2_trsf, label_trsf = self.transform(
+                (img_1_crop, img_2_crop, label_crop)
+            )
+
+        # Return sample
+        sample = (img_1_trsf, img_2_trsf, label_trsf)
+
+        return sample</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+<dt id="src.datasets.SztakiReconstructionDataset"><code class="flex name class">
+<span>class <span class="ident">SztakiReconstructionDataset</span></span>
+<span>(</span><span>data_dir='data', dataset_name='sztaki', train=True, transform=None, percentiles=2, cropping_method='random', img_height=224, img_width=224, left=0, top=0, right=1, bottom=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Dataset used for reconstruction with OmniMAE.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SztakiReconstructionDataset(Dataset):
+    &#34;&#34;&#34;Dataset used for reconstruction with OmniMAE.&#34;&#34;&#34;
+
+    def __init__(
+        self, data_dir=&#34;data&#34;, dataset_name=&#34;sztaki&#34;, train=True, transform=None,
+        percentiles=2, cropping_method=&#34;random&#34;, img_height=224, img_width=224, left=0, top=0,
+        right=1, bottom=1
+    ):
+
+        # Parameters
+        self.train = train
+        self.test_names = [&#34;Szada1&#34;, &#34;Tiszadob3&#34;]
+
+        self.transform = transform
+        if self.transform is None:
+            self.transform = create_reconstruction_transform()
+
+        self.percentiles = percentiles
+
+        self.cropping_method = cropping_method
+        self.img_height = img_height
+        self.img_width = img_width
+        self.left = left
+        self.top = top
+        self.right = right
+        self.bottom = bottom
+
+        # Check that the data directory exists
+        raise_if_no_dir(data_dir)
+
+        # Check that the ONERA dataset exists
+        data_dir = f&#34;{data_dir}/{dataset_name}&#34;
+        raise_if_no_dir(data_dir)
+
+        # Read the cities to consider
+        self.city_names = [&#34;Szada&#34;, &#34;Tiszadob&#34;]
+
+        self.city_to_idx = {}
+        self.idx_to_city = {}
+
+        # Save paths to all images
+        self.img_1_paths = {}
+        self.img_2_paths = {}
+        self.change_map_paths = {}
+
+        idx = 0
+
+        for city_name in self.city_names:
+
+            # Check that the city directory exists
+            city_imgs_dir = f&#34;{data_dir}/{city_name}&#34;
+            raise_if_no_dir(city_imgs_dir)
+
+            # There might be several images per city
+            sub_city_dir = []
+            for _, dirs, _ in os.walk(city_imgs_dir, topdown=False):
+                for name in dirs:
+                    sub_city_dir.append(name)
+
+            for sub_dir in sub_city_dir:
+
+                sub_city_name = f&#34;{city_name}{sub_dir}&#34;
+                sub_imgs_dir = f&#34;{city_imgs_dir}/{sub_dir}&#34;
+
+                if (
+                    (self.train and sub_city_name in self.test_names)
+                    or (not self.train and city_name not in self.test_names)
+                ):
+
+                    continue
+
+                # Check that the images exist
+                img_1_filename = f&#34;{sub_imgs_dir}/im1.bmp&#34;
+                img_2_filename = f&#34;{sub_imgs_dir}/im2.bmp&#34;
+
+                raise_if_no_file(img_1_filename)
+                raise_if_no_file(img_2_filename)
+
+                self.img_1_paths[sub_city_name] = img_1_filename
+                self.img_2_paths[sub_city_name] = img_2_filename
+
+                # Check that the label exists
+                label_filename = f&#34;{sub_imgs_dir}/gt.bmp&#34;
+                raise_if_no_file(label_filename)
+
+                self.change_map_paths[sub_city_name] = label_filename
+
+                # Add city name to list
+                self.city_to_idx[sub_city_name] = idx
+                self.idx_to_city[idx] = sub_city_name
+
+                idx += 1
+
+        self.n_imgs = len(self.idx_to_city)
+
+    def __len__(self):
+
+        return self.n_imgs
+
+    def __getitem__(self, idx):
+
+        # Match city name
+        if isinstance(idx, int):
+            city_name = self.idx_to_city[idx]
+        else:
+            city_name = idx
+
+        # Load the images using PIL
+        img_1_pil = Image.open(self.img_1_paths[city_name])
+        img_2_pil = Image.open(self.img_2_paths[city_name])
+
+        # Convert the images to numpy in order to concatenate the color channels
+        img_1_arr = np.asarray(img_1_pil)
+        img_2_arr = np.asarray(img_2_pil)
+
+        # Perform simple equalization to improve visualization
+        img_1_scale = simple_equalization_8bit(img_1_arr, percentiles=self.percentiles)
+        img_2_scale = simple_equalization_8bit(img_2_arr, percentiles=self.percentiles)
+
+        # Perform histogram matching for correcting colors between images
+        img_2_matched = match_histograms(img_2_scale, img_1_scale, channel_axis=-1)
+
+        # Convert back to PIL images for use with PyTorch
+        img_1 = Image.fromarray(img_1_scale)
+        img_2 = Image.fromarray(img_2_matched)
+
+        # Load the label using PIL
+        label = Image.open(self.change_map_paths[city_name])
+
+        # Crop images and label
+        img_1_crop, img_2_crop, label_crop = crop_images(
+            [img_1, img_2, label], method=self.cropping_method, img_height=self.img_height,
+            img_width=self.img_width, left=self.left, top=self.top, right=self.right,
+            bottom=self.bottom
+        )
+
+        # Apply transforms
+        if self.transform is not None:
+            img_1_trsf, img_2_trsf, label_trsf = self.transform(
+                (img_1_crop, img_2_crop, label_crop)
+            )
+
+        # Return sample
+        sample = (img_1_trsf, img_2_trsf, label_trsf)
+
+        return sample</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.utils.data.dataset.Dataset</li>
+<li>typing.Generic</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="../index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="src.datasets.onera_dataset" href="onera_dataset.html">src.datasets.onera_dataset</a></code></li>
+<li><code><a title="src.datasets.sztaki_dataset" href="sztaki_dataset.html">src.datasets.sztaki_dataset</a></code></li>
+<li><code><a title="src.datasets.transforms" href="transforms.html">src.datasets.transforms</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="src.datasets.OneraChangeDetectionDataset" href="#src.datasets.OneraChangeDetectionDataset">OneraChangeDetectionDataset</a></code></h4>
+<ul class="">
+<li><code><a title="src.datasets.OneraChangeDetectionDataset.get_city_data" href="#src.datasets.OneraChangeDetectionDataset.get_city_data">get_city_data</a></code></li>
+<li><code><a title="src.datasets.OneraChangeDetectionDataset.get_nb_channels" href="#src.datasets.OneraChangeDetectionDataset.get_nb_channels">get_nb_channels</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="src.datasets.OneraReconstructionDataset" href="#src.datasets.OneraReconstructionDataset">OneraReconstructionDataset</a></code></h4>
+</li>
+<li>
+<h4><code><a title="src.datasets.SztakiReconstructionDataset" href="#src.datasets.SztakiReconstructionDataset">SztakiReconstructionDataset</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

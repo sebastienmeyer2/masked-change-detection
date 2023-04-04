@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src API documentation</title>
+<meta name="description" content="Source code for change detection using masked image modeling …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>src</code></h1>
+</header>
+<section id="section-intro">
+<p>Source code for change detection using masked image modeling.</p>
+<h1 id="change-detection-with-masked-image-modeling">Change detection with masked image modeling</h1>
+<p>Change detection is extremely important as it helps us automatically evaluate the evolution of different developments throughout the globe.</p>
+<p>In this project, we implemented different change detection techniques based on the reconstruction of satellite images.</p>
+<p>We used data from two very well-known annotated datasets for satellite change detection. The first one is <a href="http://mplab.sztaki.hu/remotesensing/airchange_benchmark.html">SZTAKI</a>, introduced by Benedek et al. and the second one is <a href="https://rcdaudt.github.io/oscd/">OSCD</a> introduced by Daudt et al.</p>
+<p>Then, we implemented our change detection models based on <a href="https://arxiv.org/abs/2111.06377">Masked Autoencoders</a>. Recently, Girdhar et al. introduced <a href="https://github.com/facebookresearch/omnivore/tree/main/omnimae">OmniMAE</a>, a masked autoencoder model designed to handle videos.</p>
+<p>Our contribution is two-fold. First, we tried to apply OmniMAE for unsupervised change detection on satellite images. Then, we introduce OmniMAECNN, which corresponds to a OmniMAE base together with a CNN head for supervised change detection.</p>
+<p>Our results are compared to unsupervised (change vector analysis, k-means) and supervised (FresUNet) methods and can be found in our report under <em>report/report.pdf</em></p>
+<p>Please refer to the following sections for more information about the package usage:</p>
+<ol>
+<li><a href="#some-results">Some results</a></li>
+<li><a href="#installation-instructions">Installation</a></li>
+<li><a href="#package-description">Description</a></li>
+<li><a href="#package-usage">Usage via command lines</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ol>
+<h2 id="some-results">Some Results</h2>
+<p>Let <strong>1</strong> denote the first image and <strong>2</strong> denote the last image.</p>
+<p>Here, we plot the comparison of unsupervised change detection methods on SZTAKI dataset. OmniMAE is fed with a video ordering <strong>1122</strong> and no masking is applied.</p>
+<p><img alt="unsup" src="doc/unsupervised_results.png"></p>
+<p>The quantitative results for unsupervised change detection methods are summed up in the following table.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Global acc.</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F-score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CVA</strong></td>
+<td>93.58</td>
+<td>39.20</td>
+<td>36.66</td>
+<td>37.88</td>
+</tr>
+<tr>
+<td><strong>Clustering</strong></td>
+<td>92.52</td>
+<td>30.82</td>
+<td>32.03</td>
+<td>31.41</td>
+</tr>
+<tr>
+<td><strong>Baseline loss</strong></td>
+<td><strong>93.69</strong></td>
+<td><strong>40.32</strong></td>
+<td><strong>37.71</strong></td>
+<td><strong>38.98</strong></td>
+</tr>
+<tr>
+<td><strong>OmniMAE</strong></td>
+<td>93.28</td>
+<td>36.24</td>
+<td>33.90</td>
+<td>35.03</td>
+</tr>
+</tbody>
+</table>
+<p>Here, we plot the comparison of supervised change detection methods on OSCD dataset. OmniMAECNN is fed with a video ordering <strong>1221</strong> and a random masking of 80% of all patches.</p>
+<p><img alt="sup" src="doc/supervised_results.png"></p>
+<p>The quantitative results for supervised change detection methods are summed up in the following table.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Bands</th>
+<th># Params</th>
+<th>Global acc.</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F-score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FresUNet</strong></td>
+<td>RGB</td>
+<td>1,103,874</td>
+<td>93.66</td>
+<td>42.20</td>
+<td>50.30</td>
+<td>45.89</td>
+</tr>
+<tr>
+<td><strong>FresUNet</strong></td>
+<td>Res20</td>
+<td>1,104,994</td>
+<td><strong>95.05</strong></td>
+<td><strong>53.61</strong></td>
+<td><strong>54.89</strong></td>
+<td><strong>54.25</strong></td>
+</tr>
+<tr>
+<td><strong>OmniMAECNN</strong></td>
+<td>RGB</td>
+<td>1,769,855</td>
+<td>94.21</td>
+<td>44.30</td>
+<td>32.20</td>
+<td>37.29</td>
+</tr>
+<tr>
+<td><strong>OmniMAECNN</strong></td>
+<td>Res20</td>
+<td>5,907,150</td>
+<td>93.67</td>
+<td>42.46</td>
+<td>51.87</td>
+<td>46.70</td>
+</tr>
+</tbody>
+</table>
+<h2 id="installation-instructions">Installation instructions</h2>
+<p>In order to use our package and run your own experiments, we advise you to set up a virtual environment.</p>
+<p>You will need Python 3 and the <em>virtualenv</em> package:</p>
+<pre><code>pip3 install virtualenv
+</code></pre>
+<p>Then, create your virtual environment and switch to it:</p>
+<pre><code>python3 -m venv venv
+
+source venv/bin/activate (Linux)
+.\venv\Scripts\Activate.ps1 (Windows PowerShell)
+</code></pre>
+<p>You will need to install the <em>omnivore</em>, <em>omnivision</em> and <em>omnimae</em> packages locally using:</p>
+<pre><code>pip3 install -e . --extra-index-url &lt;https://download.pytorch.org/whl/cu118&gt;
+</code></pre>
+<p>Finally, install all the requirements:</p>
+<pre><code>pip3 install -r requirements.txt (Linux)
+pip3 install -r .\requirements.txt (Windows PowerShell)
+</code></pre>
+<p><em>Note</em>: Tested on Linux with Python 3.10.9 and on Windows with CUDA 11.8. For Windows, you might also need to install the corresponding CUDA Toolkit.</p>
+<h2 id="package-description">Package description</h2>
+<p>Below, we give a brief tree view of our package.</p>
+<pre><code>.
+├── doc  # contains a generated documentation of src/ in html
+├── omnimae  # contains the original OmniMAE code
+├── omnivision  # changes brought to VisionTransformer
+├── omnivore  # contains the original Omnivore code
+├── report  # contains our complete report in pdf format
+├── src  # source code
+|   ├── datasets
+|   |   ├── __init__.py
+|   |   ├── hub.py
+|   |   ├── onera_dataset.py  # load ONERA data
+|   |   ├── sztaki_dataset.py load SZTAKI data
+|   |   └── transforms.py load SZTAKI data
+|   ├── models  # sampling techniques for data imputation
+|   |   ├── __init__.py
+|   |   ├── clustering.py  # unsupervised baseline (based on k-means)
+|   |   ├── cva.py  # unsupervised baseline (change vector analysis)
+|   |   ├── fresunet.py  # supervised baseline (FresUNet)
+|   |   ├── images_to_video.py  # convert images to a fake video
+|   |   ├── omnimae_loss.py  # convert OmniMAE output back to images
+|   |   ├── omnimae.py  # OmniMAE-based reconstruction and change detection models
+|   |   └── trainer.py
+|   ├── utils
+|   |   ├── __init__.py
+|   |   ├── conversion.py  # conversion utils for visualization
+|   |   ├── data.py
+|   |   ├── image_processing.py  # filtering and equalization
+|   |   ├── misc.py
+|   |   └── plotting.py
+|   ├── __init__.py
+|   ├── change_detection.py  # main file to train models for change detection
+|   └── reconstruction.py  # main file to reconstruct satellite images
+├── README.md
+├── inference_omnimae.ipynb  # try out OmniMAE on simple reconstruction tasks
+├── inference_tutorial.ipynb  # from original omnivore codebase
+├── setup.py  # to install omnivore locally plus required Python packages
+└── requirements.txt  # contains the required Python packages to run our files
+</code></pre>
+<h2 id="package-usage">Package usage</h2>
+<p>Our implementation on top of OmniMAE for change detection can be found under the <em>src/models/omnimae.py</em> file. There are also notebooks for ease to use.</p>
+<p>You can download OSCD <a href="https://rcdaudt.github.io/oscd/">here</a> and unpack it under <em>data/OSCD</em> and you can download SZTAKI <a href="http://mplab.sztaki.hu/remotesensing/airchange_benchmark.html">here</a> and unpack it under <em>data/sztaki</em>.</p>
+<h3 id="notebooks">Notebooks</h3>
+<p>In order to use the notebooks, you will also need to install <em>jupyter</em>:</p>
+<pre><code>pip3 install jupyter notebook ipykernel
+ipython kernel install --user --name=myvenv
+</code></pre>
+<p>There are two available notebooks:</p>
+<ul>
+<li>inference_tutorial.ipynb: this notebook allows to check that Omnivore works on your machine</li>
+<li>inference_omnimae.ipynb: this notebook allows to check that OmniMAE works on your machine</li>
+</ul>
+<h3 id="reconstruction">Reconstruction</h3>
+<p>The main file to use for experimenting is <em>src/reconstruction.py</em>. The command is as follows:</p>
+<pre><code>python3 src/reconstruction.py [options]
+</code></pre>
+<ul>
+<li><code>--seed</code>: Seed to use everywhere for reproducibility. Default: 42.</li>
+<li><code>--data-dir</code>: Name of the directory where data is stored. Default: "data".</li>
+<li><code>--dataset-name</code>: Name of the dataset to use. Default: "OSCD".</li>
+<li><code>--city-name</code>: Name of the city inside dataset. Default: "beirut".</li>
+<li><code>--sub-name</code>: For SZTAKI dataset, there are several images per city. Default: "1".</li>
+<li><code>--percentiles</code>: Percentiles for saturation in the initial preprocessing of images. Default: 2.</li>
+<li><code>--cropping-method</code>: Cropping method, either "random" for random cropping of 224x224 part of the image or - "fixed" for a choice using <code>--left</code>, <code>--top</code>, <code>--right</code> and <code>--bottom</code>. Default: "random".</li>
+<li><code>--left</code>: Left limit for initial cropping of satellite images. Default: 0.</li>
+<li><code>--top</code>: Top limit for initial cropping of satellite images. Default: 0.</li>
+<li><code>--right</code>: Right limit for initial cropping of satellite images. Default: 1.</li>
+<li><code>--bottom</code>: Bottom limit for initial cropping of satellite images. Default: 1.</li>
+<li><code>--video-ordering</code>: For a given pair of images, where "1" designates the first one and "2" the last one, define a sequence of repeated images to be fed to the OmniMAE model as a video. Default: "1221".</li>
+<li><code>--masking-method</code>: Masking method, either "random", "complementary" or "none" to mask out the whole images. When method is "random" or "complementary", set the proportion of masked patches (for "complementary", in the first image) using the <code>--masking-proportion</code> argument. Default: "none".</li>
+<li><code>--masking-proportion</code>: When <code>--masking-method</code> is set to "random" or "complementary", set the proportion of masked patches, i.e. the proportion of patches which are not fed to the model. Default: 0.5.</li>
+<li><code>--window-size</code>: Window size for median filtering of the loss. Use 0 to apply no filtering. Default: 4.</li>
+<li><code>--percentile</code>: Threshold for change point detection on the loss. Default: 95.</li>
+<li><code>--savefig</code>: If "True", figures will be saved on disk. Default: "True".</li>
+<li><code>--results-dir</code>: Name of the directory where figures are stored. Default: "results".</li>
+</ul>
+<p><em>Example</em>: In order to reproduce our results, run the following commands.</p>
+<pre><code class="language-bash">python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1122 --masking-method none --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1221 --masking-method none --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1122 --masking-method complementary --masking-proportion 0.5 --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1221 --masking-method complementary --masking-proportion 0.5 --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1122 --masking-method random --masking-proportion 0.8 --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+python3 src/reconstruction.py --seed 42 --data-dir data --dataset-name sztaki --city-name Szada --sub-name 2 --video-ordering 1221 --masking-method random --masking-proportion 0.8 --window-size 4 --percentile 95 --savefig True --results-dir results
+[...]
+</code></pre>
+<h3 id="change-detection">Change detection</h3>
+<p>The main file for training models for change detection is <em>src/change_detection.py</em>. The command is as follows:</p>
+<pre><code>python3 src/change_detection.py [options]
+</code></pre>
+<ul>
+<li><code>--seed</code>: Seed to use everywhere for reproducibility. Default: 42.</li>
+<li><code>--bands-name</code>: Name of the bands to use in the images. Choose from "rgb", "nir", "res20" and "all". Default: "rgb".</li>
+<li><code>--patch-size</code>: Size of the cropped images for training. Models based on OmniMAE only support 224. Default: 224.</li>
+<li><code>--normalize</code>: If "True", normalize input images. Default: "True".</li>
+<li><code>--fp-modifier</code>: Should be used with caution. Default: 10.</li>
+<li><code>--model-name</code>: Name of the model to use for change detection. Choose from "fresunet", "omnimae", "omnimaecnn" and "omnimaefresunet". Default "fresunet".</li>
+<li><code>--video-ordering</code>: For a given pair of images, where "1" designates the first one and "2" the last one, define a sequence of repeated images to be fed to the OmniMAE model as a video. only used for OmniMAE models. Default: "1221".</li>
+<li><code>--masking-method</code>: Masking method, either "random", "complementary" or "none" to mask out the whole images. When method is "random" or "complementary", set the proportion of masked patches (for "complementary", in the first image) using the <code>--masking-proportion</code> argument. Default: "none".</li>
+<li><code>--masking-proportion</code>: When <code>--masking-method</code> is set to "random" or "complementary", set the proportion of masked patches, i.e. the proportion of patches which are not fed to the model. Default: 0.5.</li>
+<li><code>--finetune</code>: If "True", finetune first and last layers of OmniMAE. Default: "True".</li>
+<li><code>--checkpoints-dir</code>: Name of the directory where checkpoints are loaded and / or saved. Default: "checkpoints".</li>
+<li><code>--load-checkpoint</code>: If "True", load checkpoint from disk. Default: "False".</li>
+<li><code>--save-checkpoint</code>: If "True", save checkpoint to disk. Default: "True".</li>
+<li><code>--batch-size</code>: Batch size for training the model. Default: 12.</li>
+<li><code>--epochs</code>: Number of training epochs. Default: 50.</li>
+<li><code>--savefig</code>: If "True", figures will be saved on disk. Default: "True".</li>
+<li><code>--results-dir</code>: Name of the directory where figures are stored. Default: "results".</li>
+</ul>
+<p><em>Example</em>: In order to reproduce our results, run the following commands.</p>
+<pre><code class="language-bash">python3 src/change_detection.py --bands-name rgb --model-name omnimae --video-ordering 1122 --masking-method none --finetune False --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint False --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimae --video-ordering 1221 --masking-method none --finetune False --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint False --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimae --video-ordering 1122 --masking-method random --masking-proportion 0.8 --finetune False --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint False --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimae --video-ordering 1122 --masking-method random --masking-proportion 0.8 --finetune False --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint False --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name fresunet --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name res20 --model-name fresunet --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1122 --masking-method none --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1221 --masking-method none --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1122 --masking-method complementary --masking-proportion 0.5 --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1221 --masking-method complementary --masking-proportion 0.5 --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1122 --masking-method random --masking-proportion 0.8 --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name rgb --model-name omnimaecnn --video-ordering 1221 --masking-method random --masking-proportion 0.8 --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+python3 src/change_detection.py --bands-name res20 --model-name omnimaecnn --video-ordering 1221 --masking-method random --masking-proportion 0.8 --finetune True --checkpoints-dir checkpoints --load-checkpoint False --save-checkpoint True --epochs 50 --results-dir results
+[...]
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<p>A complete documentation is available in the <em>doc/src/</em> folder. If it is not
+generated, you can run from the root folder:</p>
+<pre><code class="language-bash">pip3 install pdoc3
+python3 -m pdoc -o doc/ --html --config latex_math=True --force src/
+</code></pre>
+<p>Then, open <em>doc/src/index.html</em> in your browser and follow the guide!</p>
+<h2 id="references">References</h2>
+<p>Csaba Benedek and Tamas Sziranyi. <em>Change Detection in Optical Aerial Images by a Multi-Layer Conditional Mixed Markov Model</em>. in IEEE Transactions on Geoscience and Remote Sensing, vol. 47, no. 10, pp. 3416-3430. 2009.</p>
+<p>Csaba Benedek and Tamas Sziranyi. <em>A Mixed Markov Model for Change Detection in Aerial Photos with Large Time Differences</em>. in International Conference on Pattern Recognition (ICPR), Tampa, Florida, USA. December 8-11, 2008.</p>
+<p>Rodrigo Caye Daudt, Bertrand Le Saux, Alexandre Boulch and Yann Gousseau. <em>Urban Change Detection for Multispectral Earth Observation Using Convolutional Neural Networks.</em> 2018.</p>
+<p>Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollar and Ross Girshick. <em>Masked Autoencoders Are Scalable Vision Learners.</em> 2021.</p>
+<p>Rohit Girdhar, Alaaeldin El-Nouby, Mannat Singh, Kalyan Vasudev Alwala, Armand Joulin and Ishan Misra. <em>OmniMAE: Single Model Masked Pretraining on Images and Videos.</em> 2022.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Source code for change detection using masked image modeling.
+
+..include:: ../README.md
+&#34;&#34;&#34;
+
+
+import os
+import sys
+
+
+SRC_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(SRC_PATH)  # trick to make pdoc3 understand that this is the package src folder</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="src.change_detection" href="change_detection.html">src.change_detection</a></code></dt>
+<dd>
+<div class="desc"><p>Convolutional and Transformer models for change detection on satellite images.</p></div>
+</dd>
+<dt><code class="name"><a title="src.datasets" href="datasets/index.html">src.datasets</a></code></dt>
+<dd>
+<div class="desc"><p>Reconstruction and change detection datasets.</p></div>
+</dd>
+<dt><code class="name"><a title="src.models" href="models/index.html">src.models</a></code></dt>
+<dd>
+<div class="desc"><p>Convolutional and Transfomer models for change point detection on satellite images.</p></div>
+</dd>
+<dt><code class="name"><a title="src.reconstruction" href="reconstruction.html">src.reconstruction</a></code></dt>
+<dd>
+<div class="desc"><p>Reconstruction for remote sensing data using OmniMAE.</p></div>
+</dd>
+<dt><code class="name"><a title="src.utils" href="utils/index.html">src.utils</a></code></dt>
+<dd>
+<div class="desc"><p>Utils.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="src.change_detection" href="change_detection.html">src.change_detection</a></code></li>
+<li><code><a title="src.datasets" href="datasets/index.html">src.datasets</a></code></li>
+<li><code><a title="src.models" href="models/index.html">src.models</a></code></li>
+<li><code><a title="src.reconstruction" href="reconstruction.html">src.reconstruction</a></code></li>
+<li><code><a title="src.utils" href="utils/index.html">src.utils</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

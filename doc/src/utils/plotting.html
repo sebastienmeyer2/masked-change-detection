@@ -1,0 +1,1410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.utils.plotting API documentation</title>
+<meta name="description" content="Utilitary functions to plot and save results." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.utils.plotting</code></h1>
+</header>
+<section id="section-intro">
+<p>Utilitary functions to plot and save results.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Utilitary functions to plot and save results.&#34;&#34;&#34;
+
+
+import os
+
+import warnings
+
+import numpy as np
+
+from skimage.exposure import match_histograms
+
+import torch
+
+from sklearn.metrics import accuracy_score, f1_score
+
+from tqdm import tqdm
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+
+from models import run_clustering, run_cva
+from models.omnimae_loss import compute_images_and_loss
+from utils.image_processing import simple_equalization_8bit
+from utils.conversion import compute_change_maps
+
+
+plt.rcParams.update({
+    &#34;text.usetex&#34;: True,
+    &#34;font.size&#34;: 18
+})
+
+
+MODELS_NAMES_TO_TITLES = {
+    &#34;baseline&#34;: r&#34;$\mathbf{Baseline \ loss}$&#34;,
+    &#34;reconstruction&#34;: r&#34;$\mathbf{Reconstruction \ loss}$&#34;,
+    &#34;prediction&#34;: r&#34;$\mathbf{Prediction \ loss}$&#34;,
+    &#34;both&#34;: r&#34;$\mathbf{Both \ losses}$&#34;,
+    &#34;close&#34;: r&#34;$\mathbf{Closing}$&#34;,
+    &#34;open&#34;: r&#34;$\mathbf{Opening}$&#34;,
+    &#34;clustering&#34;: r&#34;$\mathbf{Clustering}$&#34;,
+    &#34;cva&#34;: r&#34;$\mathbf{CVA}$&#34;,
+    &#34;fresunet&#34;: r&#34;$\mathbf{FresUNet}$&#34;,
+    &#34;omnimae&#34;: r&#34;$\mathbf{OmniMAE}$&#34;,
+    &#34;omnimaecnn&#34;: r&#34;$\mathbf{OmniMAE + CNN}$&#34;,
+    &#34;omnimaefresunet&#34;: r&#34;\mathbf{OmniMAE + FresUNet}$&#34;
+}
+
+
+def save_or_plot(
+    fig,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;out.png&#34;
+):
+    &#34;&#34;&#34;Save or plot given figure.&#34;&#34;&#34;
+    if savefig:
+
+        results_dir_split = results_dir.split(&#34;/&#34;)
+
+        results_dir = &#34;&#34;
+
+        for spl in results_dir_split:
+
+            if len(results_dir) == 0:
+                results_dir = spl
+            else:
+                results_dir = f&#34;{results_dir}/{spl}&#34;
+
+            if not os.path.exists(results_dir):
+                os.makedirs(results_dir)
+
+        # Add prefix
+        if len(filename_prefix) &gt; 0:
+            filename = f&#34;{filename_prefix}_{filename}&#34;
+
+        # Create the results directory where data will be stored
+        fig.savefig(f&#34;{results_dir}/{filename}&#34;, facecolor=&#34;white&#34;)
+
+        # Clear figure
+        plt.close(fig)
+
+
+def plot_reconstruction(
+    pred_imgs,
+    true_imgs,
+    loss_imgs_bin,
+    video_ordering=&#34;1221&#34;,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;reconstruction.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of reconstructed images and their loss.&#34;&#34;&#34;
+    t = len(video_ordering)
+
+    nrows = 3
+    ncols = t
+
+    fig, axs = plt.subplots(
+        nrows=nrows, ncols=ncols, figsize=(3*ncols, 3*nrows), constrained_layout=True
+    )
+
+    for i in range(t):
+
+        current_img = video_ordering[i]
+
+        axs[0, i].imshow(true_imgs[i])
+        axs[0, i].set_title(f&#34;True image {current_img}&#34;)
+        axs[0, i].axis(&#34;off&#34;)
+
+        axs[1, i].imshow(pred_imgs[i])
+        axs[1, i].set_title(f&#34;Reconstructed image {current_img}&#34;)
+        axs[1, i].axis(&#34;off&#34;)
+
+        axs[2, i].imshow(loss_imgs_bin[i], cmap=&#34;gray&#34;)
+        axs[2, i].set_title(f&#34;Loss image {current_img}&#34;)
+        axs[2, i].axis(&#34;off&#34;)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )
+
+
+def plot_change_detection(
+    change_maps,
+    label,
+    titles=None,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;change_point_detection.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of predicted change maps and true labels.&#34;&#34;&#34;
+    if not isinstance(change_maps, list):
+        change_maps = [change_maps]
+
+    ncols = len(change_maps)
+
+    fig, axs = plt.subplots(
+        ncols=ncols, figsize=(6*ncols, 6), constrained_layout=True, squeeze=False
+    )
+
+    for i, change_map in enumerate(change_maps):
+
+        label_flatten = label.flatten()
+        change_map_flatten = change_map.flatten()
+
+        with warnings.catch_warnings():
+            warnings.simplefilter(&#34;ignore&#34;, category=RuntimeWarning)
+            f1 = f1_score(label_flatten, change_map_flatten, zero_division=0)
+            cg_acc = accuracy_score(
+                label_flatten[label_flatten &gt; 0.5], change_map_flatten[label_flatten &gt; 0.5]
+            )
+            ncg_acc = accuracy_score(
+                label_flatten[label_flatten &lt; 0.5], change_map_flatten[label_flatten &lt; 0.5]
+                )
+            acc = accuracy_score(label_flatten, change_map_flatten)
+
+        if isinstance(label, torch.Tensor):
+            label_arr = label.detach().cpu().numpy()
+        else:
+            label_arr = label.copy()
+        label_comp = label_arr.copy()
+        label_comp[label_arr &gt; 0.5] = 2  # positives
+        label_comp[change_map &gt; label_arr] = 1  # false positives
+        label_comp[change_map &lt; label_arr] = 3  # false negatives
+
+        palette = np.array(
+            [
+                [255, 255, 255],  # white for true negatives
+                [255, 0, 0],  # red for false positives
+                [0, 255, 0],  # green for true positives
+                [0, 0, 255],  # blue for false negatives
+            ]
+        )
+
+        label_rgb = palette[label_comp]
+
+        axs[0, i].imshow(label_rgb, interpolation=&#34;none&#34;)
+
+        # Add a legend
+        patches = [
+            mpatches.Patch(color=&#34;white&#34;, label=&#34;TN&#34;),
+            mpatches.Patch(color=&#34;blue&#34;, label=&#34;FN&#34;),
+            mpatches.Patch(color=&#34;red&#34;, label=&#34;FP&#34;),
+            mpatches.Patch(color=&#34;green&#34;, label=&#34;TP&#34;)
+        ]
+        axs[0, i].legend(handles=patches, loc=&#34;upper left&#34;, fontsize=22)
+
+        # Remove x and y ticks
+        axs[0, i].xaxis.set_tick_params(labelbottom=False)
+        axs[0, i].yaxis.set_tick_params(labelleft=False)
+        axs[0, i].set_xticks([])
+        axs[0, i].set_yticks([])
+
+        if titles is None:
+            title = &#34;&#34;
+        else:
+            title = f&#34;{MODELS_NAMES_TO_TITLES.get(titles[i], titles[i])}&#34; + &#34;\n&#34;
+        title += f&#34;Change acc.: {cg_acc:.2f}\n&#34;
+        title += f&#34;No change acc.: {ncg_acc:.2f}\n&#34;
+        title += f&#34;Accuracy: {acc:.2f}\n&#34;
+        title += f&#34;F1-score: {f1:.2f}&#34;
+        axs[0, i].set_title(title, fontsize=22)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )
+
+
+def plot_summary(
+    true_first,
+    true_last,
+    change_map,
+    label,
+    title=None,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;summary.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of predicted change points and true labels.&#34;&#34;&#34;
+    nrows = 1
+    ncols = 4
+
+    fig, axs = plt.subplots(
+        nrows=nrows, ncols=ncols, figsize=(3*ncols, 6*nrows), constrained_layout=True
+    )
+
+    for j in range(ncols):
+        axs[j].axis(&#34;off&#34;)
+
+    # Plot images
+    axs[0].imshow(true_first)
+    axs[0].set_title(&#34;True first image&#34;)
+
+    axs[1].imshow(true_last)
+    axs[1].set_title(&#34;True last image&#34;)
+
+    axs[2].imshow(label, cmap=&#34;gray&#34;)
+    axs[2].set_title(&#34;True change map&#34;)
+
+    # Plot change map
+    label_flatten = label.flatten()
+    change_map_flatten = change_map.flatten()
+
+    with warnings.catch_warnings():
+        warnings.simplefilter(&#34;ignore&#34;, category=RuntimeWarning)
+        f1 = f1_score(label_flatten, change_map_flatten, zero_division=0)
+        cg_acc = accuracy_score(
+            label_flatten[label_flatten &gt; 0.5], change_map_flatten[label_flatten &gt; 0.5]
+        )
+        ncg_acc = accuracy_score(
+            label_flatten[label_flatten &lt; 0.5], change_map_flatten[label_flatten &lt; 0.5]
+            )
+        acc = accuracy_score(label_flatten, change_map_flatten)
+
+    if isinstance(label, torch.Tensor):
+        label_arr = label.detach().cpu().numpy()
+    else:
+        label_arr = label.copy()
+    label_comp = label_arr.copy()
+    label_comp[label_arr &gt; 0.5] = 2  # positives
+    label_comp[change_map &gt; label_arr] = 1  # false positives
+    label_comp[change_map &lt; label_arr] = 3  # false negatives
+
+    palette = np.array(
+        [
+            [255, 255, 255],  # white for true negatives
+            [255, 0, 0],  # red for false positives
+            [0, 255, 0],  # green for true positives
+            [0, 0, 255],  # blue for false negatives
+        ]
+    )
+
+    label_rgb = palette[label_comp]
+
+    axs[3].imshow(label_rgb, interpolation=&#34;none&#34;)
+
+    # Add a legend
+    patches = [
+        mpatches.Patch(color=&#34;white&#34;, label=&#34;TN&#34;),
+        mpatches.Patch(color=&#34;blue&#34;, label=&#34;FN&#34;),
+        mpatches.Patch(color=&#34;red&#34;, label=&#34;FP&#34;),
+        mpatches.Patch(color=&#34;green&#34;, label=&#34;TP&#34;)
+    ]
+    axs[3].legend(handles=patches, loc=&#34;upper left&#34;)
+
+    # Remove x and y ticks
+    axs[3].xaxis.set_tick_params(labelbottom=False)
+    axs[3].yaxis.set_tick_params(labelleft=False)
+    axs[3].set_xticks([])
+    axs[3].set_yticks([])
+
+    axs[3].set_title(&#34;Predicted change map&#34;)
+
+    if title is None:
+        title = &#34;&#34;
+    else:
+        title = f&#34;{MODELS_NAMES_TO_TITLES.get(title, title)}&#34; + &#34;\n&#34;
+    title += f&#34;Change acc.: {cg_acc:.2f}\n&#34;
+    title += f&#34;No change acc.: {ncg_acc:.2f}\n&#34;
+    title += f&#34;Accuracy: {acc:.2f}\n&#34;
+    title += f&#34;F1-score: {f1:.2f}&#34;
+    fig.suptitle(title)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )
+
+
+def plot_model_predictions(
+    model,
+    model_name,
+    dataset,
+    device=&#34;cuda&#34;,
+    img_height=224,
+    img_width=224,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    bands_name=&#34;rgb&#34;,
+    video_ordering=&#34;1221&#34;,
+    masking_method=&#34;none&#34;,
+    masking_proportion=0.5,
+    results_dir=&#34;results&#34;,
+    window_size=4,
+    percentile=95
+):
+
+    model.eval()
+
+    if model_name == &#34;omnimae&#34;:
+
+        models_names = [&#34;cva&#34;, &#34;clustering&#34;, &#34;baseline&#34;, &#34;reconstruction&#34;, &#34;prediction&#34;, &#34;omnimae&#34;]
+
+    else:
+
+        models_names = [&#34;cva&#34;, &#34;clustering&#34;, model_name]
+
+    tot_count = {mn: 0 for mn in models_names}
+
+    n = 2  # number of classes
+    class_correct = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_total = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_acc = {mn: [0.0 for i in range(n)] for mn in models_names}
+
+    tp = {mn: 0 for mn in models_names}
+    tn = {mn: 0 for mn in models_names}
+    fp = {mn: 0 for mn in models_names}
+    fn = {mn: 0 for mn in models_names}
+
+    pbar = tqdm(dataset.city_names, desc=&#34;PLotting change maps&#34;)
+
+    for city_name in pbar:
+
+        pbar.set_description(f&#34;Plotting change maps for {city_name}&#34;)
+
+        # Retrieve full city images
+        img_1_full, img_2_full, label_full = dataset.get_city_data(city_name)
+
+        sh = label_full.shape
+
+        # We will pass over all img_height*img_width images
+        for ii in range(sh[0] // img_width):
+
+            for jj in range(sh[1] // img_height):
+
+                xmin = ii * img_width
+                xmax = min((ii+1) * img_width, sh[0])
+                ymin = jj * img_height
+                ymax = min((jj+1) * img_height, sh[1])
+
+                img_1 = img_1_full[:, xmin:xmax, ymin:ymax].float()
+                img_2 = img_2_full[:, xmin:xmax, ymin:ymax].float()
+                label = torch.from_numpy(1.0*label_full[xmin:xmax, ymin:ymax]).long().numpy()
+
+                # Move to device
+                img_1 = img_1.to(device)
+                img_2 = img_2.to(device)
+
+                # Predict change map
+                res = model(img_1.unsqueeze(0), img_2.unsqueeze(0))
+
+                pred_labels = []
+
+                # Convert images to arrays
+                img_1 = img_1.detach().cpu().numpy().transpose((1, 2, 0))
+                img_2 = img_2.detach().cpu().numpy().transpose((1, 2, 0))
+
+                img_1 = simple_equalization_8bit(img_1, percentiles=percentiles)
+                img_2 = simple_equalization_8bit(img_2, percentiles=percentiles)
+
+                img_2_matched = match_histograms(img_2, img_1, channel_axis=-1)
+
+                # Compute change vector analysis label
+                cva_label = run_cva(
+                    img_1, img_2_matched, window_size=window_size, percentile=percentile
+                )
+                pred_labels.append(cva_label)
+
+                # Compute clustering label
+                cluster_label, _, _ = run_clustering(
+                    img_1, img_2_matched, components=clustering_components,
+                    threshold=clustering_threshold
+                )
+                pred_labels.append(cluster_label)
+
+                # Compute model labels
+                if model_name == &#34;omnimae&#34;:
+
+                    output, true_video, mask = res
+
+                    pred_imgs, true_imgs, loss_imgs = compute_images_and_loss(
+                        output, true_video, mask
+                    )
+
+                    model_labels = compute_change_maps(
+                        pred_imgs, true_imgs, loss_imgs, video_ordering=video_ordering,
+                        window_size=window_size, percentile=percentile
+                    )
+
+                    pred_labels.extend(list(model_labels))
+
+                else:
+
+                    _, model_label = torch.max(res.data, 1)
+                    pred_labels.append(model_label.squeeze().detach().cpu().numpy())
+
+                # Compute scores
+                for i, (mn, pred_label) in enumerate(zip(models_names, pred_labels)):
+
+                    tot_count[mn] += np.prod(label.shape)
+
+                    c = pred_label == label
+                    for i in range(c.shape[0]):
+                        for j in range(c.shape[1]):
+                            pct = int(label[i, j])
+                            class_correct[mn][pct] += c[i, j]
+                            class_total[mn][pct] += 1
+
+                    pr = pred_label &gt; 0
+                    gt = label &gt; 0
+
+                    tp[mn] += np.logical_and(pr, gt).sum()
+                    tn[mn] += np.logical_and(np.logical_not(pr), np.logical_not(gt)).sum()
+                    fp[mn] += np.logical_and(pr, np.logical_not(gt)).sum()
+                    fn[mn] += np.logical_and(np.logical_not(pr), gt).sum()
+
+                # Save change map
+                city_results_dir = f&#34;{results_dir}/OSCD/{city_name}&#34;
+                filename_prefix = f&#34;{city_name}{ii}{jj}_{model_name}_{bands_name}_{video_ordering}&#34;
+                filename_prefix += f&#34;_{masking_method}{masking_proportion}&#34;
+
+                plot_change_detection(
+                    pred_labels, label, titles=models_names, results_dir=city_results_dir,
+                    filename_prefix=filename_prefix
+                )
+
+                plot_summary(
+                    img_1[:, :, :3], img_2[:, :, :3], pred_labels[-3], label, title=model_name,
+                    results_dir=city_results_dir, filename_prefix=filename_prefix
+                )
+
+    test_acc = {}
+
+    prec = {}
+    rec = {}
+    f_score = {}
+
+    prec_nc = {}
+    rec_nc = {}
+    f_score_nc = {}
+
+    for mn in models_names:
+
+        test_acc[mn] = 100.0 * (tp[mn] + tn[mn]) / tot_count[mn]
+
+        for i in range(n):
+            class_acc[mn][i] = 100.0 * class_correct[mn][i] / max(class_total[mn][i], 1e-5)
+            class_acc[mn][i] = float(class_acc[mn][i])
+
+        model_tp = tp[mn]
+        model_tn = tn[mn]
+        model_fp = fp[mn]
+        model_fn = fn[mn]
+
+        prec[mn] = model_tp / (model_tp + model_fp)
+        rec[mn] = model_tp / (model_tp + model_fn)
+        f_score[mn] = 2.0 * (prec[mn] * rec[mn]) / (prec[mn] + rec[mn])
+
+        prec_nc[mn] = model_tn / (model_tn + model_fn)
+        rec_nc[mn] = model_tn / (model_tn + model_fp)
+        f_score_nc[mn] = 2.0 * (prec_nc[mn] * rec_nc[mn]) / (prec_nc[mn] + rec_nc[mn])
+
+    metrics_results = {
+        &#34;accuracy&#34;: test_acc,
+        &#34;class_accuracy&#34;: class_acc,
+        &#34;change precision&#34;: prec,
+        &#34;change recall&#34;: rec,
+        &#34;change f1-score&#34;: f_score,
+        &#34;no change precision&#34;: prec_nc,
+        &#34;no change recall&#34;: rec_nc,
+        &#34;no change f1-score&#34;: f_score_nc
+    }
+
+    return metrics_results
+
+
+def evaluate(
+    model,
+    model_name,
+    test_loader,
+    device=&#34;cuda&#34;,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    video_ordering=&#34;1221&#34;,
+    window_size=4,
+    percentile=95
+):
+
+    model.eval()
+
+    if model_name == &#34;omnimae&#34;:
+
+        models_names = [&#34;baseline&#34;, &#34;reconstruction&#34;, &#34;prediction&#34;, &#34;omnimae&#34;, &#34;clustering&#34;, &#34;cva&#34;]
+
+    else:
+
+        models_names = [model_name, &#34;clustering&#34;, &#34;cva&#34;]
+
+    tot_count = {mn: 0 for mn in models_names}
+
+    n = 2  # number of classes
+    class_correct = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_total = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_acc = {mn: [0.0 for i in range(n)] for mn in models_names}
+
+    tp = {mn: 0 for mn in models_names}
+    tn = {mn: 0 for mn in models_names}
+    fp = {mn: 0 for mn in models_names}
+    fn = {mn: 0 for mn in models_names}
+
+    pbar = tqdm(test_loader, desc=&#34;Computing scores&#34;)
+
+    for batch in pbar:
+
+        # Read data
+        img_1, img_2, label = batch
+
+        # Move to device
+        img_1 = img_1.float().to(device)
+        img_2 = img_2.float().to(device)
+        label = label.squeeze().long().numpy()
+
+        # Predict change map
+        res = model(img_1, img_2)
+
+        if model_name == &#34;omnimae&#34;:
+
+            output, true_video, mask = res
+
+            pred_imgs, true_imgs, loss_imgs = compute_images_and_loss(
+                output, true_video, mask
+            )
+
+            pred_labels = list(compute_change_maps(
+                pred_imgs, true_imgs, loss_imgs, video_ordering=video_ordering,
+                window_size=window_size, percentile=percentile
+            ))
+
+        else:
+
+            _, res = torch.max(res.data, 1)
+            pred_labels = [res.squeeze().detach().cpu().numpy()]
+
+        # Convert images to arrays
+        img_1 = img_1.squeeze().detach().cpu().numpy().transpose((1, 2, 0))
+        img_2 = img_2.squeeze().detach().cpu().numpy().transpose((1, 2, 0))
+
+        img_1 = simple_equalization_8bit(img_1, percentiles=percentiles)
+        img_2 = simple_equalization_8bit(img_2, percentiles=percentiles)
+
+        img_2_matched = match_histograms(img_2, img_1, channel_axis=-1)
+
+        # Compute clustering label
+        cluster_label, _, _ = run_clustering(
+            img_1, img_2_matched, components=clustering_components,
+            threshold=clustering_threshold
+        )
+        pred_labels.append(cluster_label)
+
+        # Compute change vector analysis label
+        cva_label = run_cva(img_1, img_2_matched, window_size=window_size, percentile=percentile)
+        pred_labels.append(cva_label)
+
+        # Compute scores
+        for i, (mn, pred_label) in enumerate(zip(models_names, pred_labels)):
+
+            tot_count[mn] += np.prod(label.shape)
+
+            c = pred_label == label
+            for i in range(c.shape[0]):
+                for j in range(c.shape[1]):
+                    pct = int(label[i, j])
+                    class_correct[mn][pct] += c[i, j]
+                    class_total[mn][pct] += 1
+
+            pr = pred_label &gt; 0
+            gt = label &gt; 0
+
+            tp[mn] += np.logical_and(pr, gt).sum()
+            tn[mn] += np.logical_and(np.logical_not(pr), np.logical_not(gt)).sum()
+            fp[mn] += np.logical_and(pr, np.logical_not(gt)).sum()
+            fn[mn] += np.logical_and(np.logical_not(pr), gt).sum()
+
+    test_acc = {}
+
+    prec = {}
+    rec = {}
+    f_score = {}
+
+    prec_nc = {}
+    rec_nc = {}
+    f_score_nc = {}
+
+    for mn in models_names:
+
+        test_acc[mn] = 100.0 * (tp[mn] + tn[mn]) / tot_count[mn]
+
+        for i in range(n):
+            class_acc[mn][i] = 100.0 * class_correct[mn][i] / max(class_total[mn][i], 1e-5)
+            class_acc[mn][i] = float(class_acc[mn][i])
+
+        model_tp = tp[mn]
+        model_tn = tn[mn]
+        model_fp = fp[mn]
+        model_fn = fn[mn]
+
+        prec[mn] = model_tp / (model_tp + model_fp)
+        rec[mn] = model_tp / (model_tp + model_fn)
+        f_score[mn] = 2.0 * (prec[mn] * rec[mn]) / (prec[mn] + rec[mn])
+
+        prec_nc[mn] = model_tn / (model_tn + model_fn)
+        rec_nc[mn] = model_tn / (model_tn + model_fp)
+        f_score_nc[mn] = 2.0 * (prec_nc[mn] * rec_nc[mn]) / (prec_nc[mn] + rec_nc[mn])
+
+    metrics_results = {
+        &#34;accuracy&#34;: test_acc,
+        &#34;class_accuracy&#34;: class_acc,
+        &#34;change precision&#34;: prec,
+        &#34;change recall&#34;: rec,
+        &#34;change f1-score&#34;: f_score,
+        &#34;no change precision&#34;: prec_nc,
+        &#34;no change recall&#34;: rec_nc,
+        &#34;no change f1-score&#34;: f_score_nc
+    }
+
+    return metrics_results</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.utils.plotting.evaluate"><code class="name flex">
+<span>def <span class="ident">evaluate</span></span>(<span>model, model_name, test_loader, device='cuda', percentiles=0.5, clustering_components=3, clustering_threshold=100, video_ordering='1221', window_size=4, percentile=95)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def evaluate(
+    model,
+    model_name,
+    test_loader,
+    device=&#34;cuda&#34;,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    video_ordering=&#34;1221&#34;,
+    window_size=4,
+    percentile=95
+):
+
+    model.eval()
+
+    if model_name == &#34;omnimae&#34;:
+
+        models_names = [&#34;baseline&#34;, &#34;reconstruction&#34;, &#34;prediction&#34;, &#34;omnimae&#34;, &#34;clustering&#34;, &#34;cva&#34;]
+
+    else:
+
+        models_names = [model_name, &#34;clustering&#34;, &#34;cva&#34;]
+
+    tot_count = {mn: 0 for mn in models_names}
+
+    n = 2  # number of classes
+    class_correct = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_total = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_acc = {mn: [0.0 for i in range(n)] for mn in models_names}
+
+    tp = {mn: 0 for mn in models_names}
+    tn = {mn: 0 for mn in models_names}
+    fp = {mn: 0 for mn in models_names}
+    fn = {mn: 0 for mn in models_names}
+
+    pbar = tqdm(test_loader, desc=&#34;Computing scores&#34;)
+
+    for batch in pbar:
+
+        # Read data
+        img_1, img_2, label = batch
+
+        # Move to device
+        img_1 = img_1.float().to(device)
+        img_2 = img_2.float().to(device)
+        label = label.squeeze().long().numpy()
+
+        # Predict change map
+        res = model(img_1, img_2)
+
+        if model_name == &#34;omnimae&#34;:
+
+            output, true_video, mask = res
+
+            pred_imgs, true_imgs, loss_imgs = compute_images_and_loss(
+                output, true_video, mask
+            )
+
+            pred_labels = list(compute_change_maps(
+                pred_imgs, true_imgs, loss_imgs, video_ordering=video_ordering,
+                window_size=window_size, percentile=percentile
+            ))
+
+        else:
+
+            _, res = torch.max(res.data, 1)
+            pred_labels = [res.squeeze().detach().cpu().numpy()]
+
+        # Convert images to arrays
+        img_1 = img_1.squeeze().detach().cpu().numpy().transpose((1, 2, 0))
+        img_2 = img_2.squeeze().detach().cpu().numpy().transpose((1, 2, 0))
+
+        img_1 = simple_equalization_8bit(img_1, percentiles=percentiles)
+        img_2 = simple_equalization_8bit(img_2, percentiles=percentiles)
+
+        img_2_matched = match_histograms(img_2, img_1, channel_axis=-1)
+
+        # Compute clustering label
+        cluster_label, _, _ = run_clustering(
+            img_1, img_2_matched, components=clustering_components,
+            threshold=clustering_threshold
+        )
+        pred_labels.append(cluster_label)
+
+        # Compute change vector analysis label
+        cva_label = run_cva(img_1, img_2_matched, window_size=window_size, percentile=percentile)
+        pred_labels.append(cva_label)
+
+        # Compute scores
+        for i, (mn, pred_label) in enumerate(zip(models_names, pred_labels)):
+
+            tot_count[mn] += np.prod(label.shape)
+
+            c = pred_label == label
+            for i in range(c.shape[0]):
+                for j in range(c.shape[1]):
+                    pct = int(label[i, j])
+                    class_correct[mn][pct] += c[i, j]
+                    class_total[mn][pct] += 1
+
+            pr = pred_label &gt; 0
+            gt = label &gt; 0
+
+            tp[mn] += np.logical_and(pr, gt).sum()
+            tn[mn] += np.logical_and(np.logical_not(pr), np.logical_not(gt)).sum()
+            fp[mn] += np.logical_and(pr, np.logical_not(gt)).sum()
+            fn[mn] += np.logical_and(np.logical_not(pr), gt).sum()
+
+    test_acc = {}
+
+    prec = {}
+    rec = {}
+    f_score = {}
+
+    prec_nc = {}
+    rec_nc = {}
+    f_score_nc = {}
+
+    for mn in models_names:
+
+        test_acc[mn] = 100.0 * (tp[mn] + tn[mn]) / tot_count[mn]
+
+        for i in range(n):
+            class_acc[mn][i] = 100.0 * class_correct[mn][i] / max(class_total[mn][i], 1e-5)
+            class_acc[mn][i] = float(class_acc[mn][i])
+
+        model_tp = tp[mn]
+        model_tn = tn[mn]
+        model_fp = fp[mn]
+        model_fn = fn[mn]
+
+        prec[mn] = model_tp / (model_tp + model_fp)
+        rec[mn] = model_tp / (model_tp + model_fn)
+        f_score[mn] = 2.0 * (prec[mn] * rec[mn]) / (prec[mn] + rec[mn])
+
+        prec_nc[mn] = model_tn / (model_tn + model_fn)
+        rec_nc[mn] = model_tn / (model_tn + model_fp)
+        f_score_nc[mn] = 2.0 * (prec_nc[mn] * rec_nc[mn]) / (prec_nc[mn] + rec_nc[mn])
+
+    metrics_results = {
+        &#34;accuracy&#34;: test_acc,
+        &#34;class_accuracy&#34;: class_acc,
+        &#34;change precision&#34;: prec,
+        &#34;change recall&#34;: rec,
+        &#34;change f1-score&#34;: f_score,
+        &#34;no change precision&#34;: prec_nc,
+        &#34;no change recall&#34;: rec_nc,
+        &#34;no change f1-score&#34;: f_score_nc
+    }
+
+    return metrics_results</code></pre>
+</details>
+</dd>
+<dt id="src.utils.plotting.plot_change_detection"><code class="name flex">
+<span>def <span class="ident">plot_change_detection</span></span>(<span>change_maps, label, titles=None, savefig=True, results_dir='results', filename_prefix='', filename='change_point_detection.png')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot a comparison of predicted change maps and true labels.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_change_detection(
+    change_maps,
+    label,
+    titles=None,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;change_point_detection.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of predicted change maps and true labels.&#34;&#34;&#34;
+    if not isinstance(change_maps, list):
+        change_maps = [change_maps]
+
+    ncols = len(change_maps)
+
+    fig, axs = plt.subplots(
+        ncols=ncols, figsize=(6*ncols, 6), constrained_layout=True, squeeze=False
+    )
+
+    for i, change_map in enumerate(change_maps):
+
+        label_flatten = label.flatten()
+        change_map_flatten = change_map.flatten()
+
+        with warnings.catch_warnings():
+            warnings.simplefilter(&#34;ignore&#34;, category=RuntimeWarning)
+            f1 = f1_score(label_flatten, change_map_flatten, zero_division=0)
+            cg_acc = accuracy_score(
+                label_flatten[label_flatten &gt; 0.5], change_map_flatten[label_flatten &gt; 0.5]
+            )
+            ncg_acc = accuracy_score(
+                label_flatten[label_flatten &lt; 0.5], change_map_flatten[label_flatten &lt; 0.5]
+                )
+            acc = accuracy_score(label_flatten, change_map_flatten)
+
+        if isinstance(label, torch.Tensor):
+            label_arr = label.detach().cpu().numpy()
+        else:
+            label_arr = label.copy()
+        label_comp = label_arr.copy()
+        label_comp[label_arr &gt; 0.5] = 2  # positives
+        label_comp[change_map &gt; label_arr] = 1  # false positives
+        label_comp[change_map &lt; label_arr] = 3  # false negatives
+
+        palette = np.array(
+            [
+                [255, 255, 255],  # white for true negatives
+                [255, 0, 0],  # red for false positives
+                [0, 255, 0],  # green for true positives
+                [0, 0, 255],  # blue for false negatives
+            ]
+        )
+
+        label_rgb = palette[label_comp]
+
+        axs[0, i].imshow(label_rgb, interpolation=&#34;none&#34;)
+
+        # Add a legend
+        patches = [
+            mpatches.Patch(color=&#34;white&#34;, label=&#34;TN&#34;),
+            mpatches.Patch(color=&#34;blue&#34;, label=&#34;FN&#34;),
+            mpatches.Patch(color=&#34;red&#34;, label=&#34;FP&#34;),
+            mpatches.Patch(color=&#34;green&#34;, label=&#34;TP&#34;)
+        ]
+        axs[0, i].legend(handles=patches, loc=&#34;upper left&#34;, fontsize=22)
+
+        # Remove x and y ticks
+        axs[0, i].xaxis.set_tick_params(labelbottom=False)
+        axs[0, i].yaxis.set_tick_params(labelleft=False)
+        axs[0, i].set_xticks([])
+        axs[0, i].set_yticks([])
+
+        if titles is None:
+            title = &#34;&#34;
+        else:
+            title = f&#34;{MODELS_NAMES_TO_TITLES.get(titles[i], titles[i])}&#34; + &#34;\n&#34;
+        title += f&#34;Change acc.: {cg_acc:.2f}\n&#34;
+        title += f&#34;No change acc.: {ncg_acc:.2f}\n&#34;
+        title += f&#34;Accuracy: {acc:.2f}\n&#34;
+        title += f&#34;F1-score: {f1:.2f}&#34;
+        axs[0, i].set_title(title, fontsize=22)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )</code></pre>
+</details>
+</dd>
+<dt id="src.utils.plotting.plot_model_predictions"><code class="name flex">
+<span>def <span class="ident">plot_model_predictions</span></span>(<span>model, model_name, dataset, device='cuda', img_height=224, img_width=224, percentiles=0.5, clustering_components=3, clustering_threshold=100, bands_name='rgb', video_ordering='1221', masking_method='none', masking_proportion=0.5, results_dir='results', window_size=4, percentile=95)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_model_predictions(
+    model,
+    model_name,
+    dataset,
+    device=&#34;cuda&#34;,
+    img_height=224,
+    img_width=224,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    bands_name=&#34;rgb&#34;,
+    video_ordering=&#34;1221&#34;,
+    masking_method=&#34;none&#34;,
+    masking_proportion=0.5,
+    results_dir=&#34;results&#34;,
+    window_size=4,
+    percentile=95
+):
+
+    model.eval()
+
+    if model_name == &#34;omnimae&#34;:
+
+        models_names = [&#34;cva&#34;, &#34;clustering&#34;, &#34;baseline&#34;, &#34;reconstruction&#34;, &#34;prediction&#34;, &#34;omnimae&#34;]
+
+    else:
+
+        models_names = [&#34;cva&#34;, &#34;clustering&#34;, model_name]
+
+    tot_count = {mn: 0 for mn in models_names}
+
+    n = 2  # number of classes
+    class_correct = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_total = {mn: [0.0 for i in range(n)] for mn in models_names}
+    class_acc = {mn: [0.0 for i in range(n)] for mn in models_names}
+
+    tp = {mn: 0 for mn in models_names}
+    tn = {mn: 0 for mn in models_names}
+    fp = {mn: 0 for mn in models_names}
+    fn = {mn: 0 for mn in models_names}
+
+    pbar = tqdm(dataset.city_names, desc=&#34;PLotting change maps&#34;)
+
+    for city_name in pbar:
+
+        pbar.set_description(f&#34;Plotting change maps for {city_name}&#34;)
+
+        # Retrieve full city images
+        img_1_full, img_2_full, label_full = dataset.get_city_data(city_name)
+
+        sh = label_full.shape
+
+        # We will pass over all img_height*img_width images
+        for ii in range(sh[0] // img_width):
+
+            for jj in range(sh[1] // img_height):
+
+                xmin = ii * img_width
+                xmax = min((ii+1) * img_width, sh[0])
+                ymin = jj * img_height
+                ymax = min((jj+1) * img_height, sh[1])
+
+                img_1 = img_1_full[:, xmin:xmax, ymin:ymax].float()
+                img_2 = img_2_full[:, xmin:xmax, ymin:ymax].float()
+                label = torch.from_numpy(1.0*label_full[xmin:xmax, ymin:ymax]).long().numpy()
+
+                # Move to device
+                img_1 = img_1.to(device)
+                img_2 = img_2.to(device)
+
+                # Predict change map
+                res = model(img_1.unsqueeze(0), img_2.unsqueeze(0))
+
+                pred_labels = []
+
+                # Convert images to arrays
+                img_1 = img_1.detach().cpu().numpy().transpose((1, 2, 0))
+                img_2 = img_2.detach().cpu().numpy().transpose((1, 2, 0))
+
+                img_1 = simple_equalization_8bit(img_1, percentiles=percentiles)
+                img_2 = simple_equalization_8bit(img_2, percentiles=percentiles)
+
+                img_2_matched = match_histograms(img_2, img_1, channel_axis=-1)
+
+                # Compute change vector analysis label
+                cva_label = run_cva(
+                    img_1, img_2_matched, window_size=window_size, percentile=percentile
+                )
+                pred_labels.append(cva_label)
+
+                # Compute clustering label
+                cluster_label, _, _ = run_clustering(
+                    img_1, img_2_matched, components=clustering_components,
+                    threshold=clustering_threshold
+                )
+                pred_labels.append(cluster_label)
+
+                # Compute model labels
+                if model_name == &#34;omnimae&#34;:
+
+                    output, true_video, mask = res
+
+                    pred_imgs, true_imgs, loss_imgs = compute_images_and_loss(
+                        output, true_video, mask
+                    )
+
+                    model_labels = compute_change_maps(
+                        pred_imgs, true_imgs, loss_imgs, video_ordering=video_ordering,
+                        window_size=window_size, percentile=percentile
+                    )
+
+                    pred_labels.extend(list(model_labels))
+
+                else:
+
+                    _, model_label = torch.max(res.data, 1)
+                    pred_labels.append(model_label.squeeze().detach().cpu().numpy())
+
+                # Compute scores
+                for i, (mn, pred_label) in enumerate(zip(models_names, pred_labels)):
+
+                    tot_count[mn] += np.prod(label.shape)
+
+                    c = pred_label == label
+                    for i in range(c.shape[0]):
+                        for j in range(c.shape[1]):
+                            pct = int(label[i, j])
+                            class_correct[mn][pct] += c[i, j]
+                            class_total[mn][pct] += 1
+
+                    pr = pred_label &gt; 0
+                    gt = label &gt; 0
+
+                    tp[mn] += np.logical_and(pr, gt).sum()
+                    tn[mn] += np.logical_and(np.logical_not(pr), np.logical_not(gt)).sum()
+                    fp[mn] += np.logical_and(pr, np.logical_not(gt)).sum()
+                    fn[mn] += np.logical_and(np.logical_not(pr), gt).sum()
+
+                # Save change map
+                city_results_dir = f&#34;{results_dir}/OSCD/{city_name}&#34;
+                filename_prefix = f&#34;{city_name}{ii}{jj}_{model_name}_{bands_name}_{video_ordering}&#34;
+                filename_prefix += f&#34;_{masking_method}{masking_proportion}&#34;
+
+                plot_change_detection(
+                    pred_labels, label, titles=models_names, results_dir=city_results_dir,
+                    filename_prefix=filename_prefix
+                )
+
+                plot_summary(
+                    img_1[:, :, :3], img_2[:, :, :3], pred_labels[-3], label, title=model_name,
+                    results_dir=city_results_dir, filename_prefix=filename_prefix
+                )
+
+    test_acc = {}
+
+    prec = {}
+    rec = {}
+    f_score = {}
+
+    prec_nc = {}
+    rec_nc = {}
+    f_score_nc = {}
+
+    for mn in models_names:
+
+        test_acc[mn] = 100.0 * (tp[mn] + tn[mn]) / tot_count[mn]
+
+        for i in range(n):
+            class_acc[mn][i] = 100.0 * class_correct[mn][i] / max(class_total[mn][i], 1e-5)
+            class_acc[mn][i] = float(class_acc[mn][i])
+
+        model_tp = tp[mn]
+        model_tn = tn[mn]
+        model_fp = fp[mn]
+        model_fn = fn[mn]
+
+        prec[mn] = model_tp / (model_tp + model_fp)
+        rec[mn] = model_tp / (model_tp + model_fn)
+        f_score[mn] = 2.0 * (prec[mn] * rec[mn]) / (prec[mn] + rec[mn])
+
+        prec_nc[mn] = model_tn / (model_tn + model_fn)
+        rec_nc[mn] = model_tn / (model_tn + model_fp)
+        f_score_nc[mn] = 2.0 * (prec_nc[mn] * rec_nc[mn]) / (prec_nc[mn] + rec_nc[mn])
+
+    metrics_results = {
+        &#34;accuracy&#34;: test_acc,
+        &#34;class_accuracy&#34;: class_acc,
+        &#34;change precision&#34;: prec,
+        &#34;change recall&#34;: rec,
+        &#34;change f1-score&#34;: f_score,
+        &#34;no change precision&#34;: prec_nc,
+        &#34;no change recall&#34;: rec_nc,
+        &#34;no change f1-score&#34;: f_score_nc
+    }
+
+    return metrics_results</code></pre>
+</details>
+</dd>
+<dt id="src.utils.plotting.plot_reconstruction"><code class="name flex">
+<span>def <span class="ident">plot_reconstruction</span></span>(<span>pred_imgs, true_imgs, loss_imgs_bin, video_ordering='1221', savefig=True, results_dir='results', filename_prefix='', filename='reconstruction.png')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot a comparison of reconstructed images and their loss.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_reconstruction(
+    pred_imgs,
+    true_imgs,
+    loss_imgs_bin,
+    video_ordering=&#34;1221&#34;,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;reconstruction.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of reconstructed images and their loss.&#34;&#34;&#34;
+    t = len(video_ordering)
+
+    nrows = 3
+    ncols = t
+
+    fig, axs = plt.subplots(
+        nrows=nrows, ncols=ncols, figsize=(3*ncols, 3*nrows), constrained_layout=True
+    )
+
+    for i in range(t):
+
+        current_img = video_ordering[i]
+
+        axs[0, i].imshow(true_imgs[i])
+        axs[0, i].set_title(f&#34;True image {current_img}&#34;)
+        axs[0, i].axis(&#34;off&#34;)
+
+        axs[1, i].imshow(pred_imgs[i])
+        axs[1, i].set_title(f&#34;Reconstructed image {current_img}&#34;)
+        axs[1, i].axis(&#34;off&#34;)
+
+        axs[2, i].imshow(loss_imgs_bin[i], cmap=&#34;gray&#34;)
+        axs[2, i].set_title(f&#34;Loss image {current_img}&#34;)
+        axs[2, i].axis(&#34;off&#34;)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )</code></pre>
+</details>
+</dd>
+<dt id="src.utils.plotting.plot_summary"><code class="name flex">
+<span>def <span class="ident">plot_summary</span></span>(<span>true_first, true_last, change_map, label, title=None, savefig=True, results_dir='results', filename_prefix='', filename='summary.png')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plot a comparison of predicted change points and true labels.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def plot_summary(
+    true_first,
+    true_last,
+    change_map,
+    label,
+    title=None,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;summary.png&#34;
+):
+    &#34;&#34;&#34;Plot a comparison of predicted change points and true labels.&#34;&#34;&#34;
+    nrows = 1
+    ncols = 4
+
+    fig, axs = plt.subplots(
+        nrows=nrows, ncols=ncols, figsize=(3*ncols, 6*nrows), constrained_layout=True
+    )
+
+    for j in range(ncols):
+        axs[j].axis(&#34;off&#34;)
+
+    # Plot images
+    axs[0].imshow(true_first)
+    axs[0].set_title(&#34;True first image&#34;)
+
+    axs[1].imshow(true_last)
+    axs[1].set_title(&#34;True last image&#34;)
+
+    axs[2].imshow(label, cmap=&#34;gray&#34;)
+    axs[2].set_title(&#34;True change map&#34;)
+
+    # Plot change map
+    label_flatten = label.flatten()
+    change_map_flatten = change_map.flatten()
+
+    with warnings.catch_warnings():
+        warnings.simplefilter(&#34;ignore&#34;, category=RuntimeWarning)
+        f1 = f1_score(label_flatten, change_map_flatten, zero_division=0)
+        cg_acc = accuracy_score(
+            label_flatten[label_flatten &gt; 0.5], change_map_flatten[label_flatten &gt; 0.5]
+        )
+        ncg_acc = accuracy_score(
+            label_flatten[label_flatten &lt; 0.5], change_map_flatten[label_flatten &lt; 0.5]
+            )
+        acc = accuracy_score(label_flatten, change_map_flatten)
+
+    if isinstance(label, torch.Tensor):
+        label_arr = label.detach().cpu().numpy()
+    else:
+        label_arr = label.copy()
+    label_comp = label_arr.copy()
+    label_comp[label_arr &gt; 0.5] = 2  # positives
+    label_comp[change_map &gt; label_arr] = 1  # false positives
+    label_comp[change_map &lt; label_arr] = 3  # false negatives
+
+    palette = np.array(
+        [
+            [255, 255, 255],  # white for true negatives
+            [255, 0, 0],  # red for false positives
+            [0, 255, 0],  # green for true positives
+            [0, 0, 255],  # blue for false negatives
+        ]
+    )
+
+    label_rgb = palette[label_comp]
+
+    axs[3].imshow(label_rgb, interpolation=&#34;none&#34;)
+
+    # Add a legend
+    patches = [
+        mpatches.Patch(color=&#34;white&#34;, label=&#34;TN&#34;),
+        mpatches.Patch(color=&#34;blue&#34;, label=&#34;FN&#34;),
+        mpatches.Patch(color=&#34;red&#34;, label=&#34;FP&#34;),
+        mpatches.Patch(color=&#34;green&#34;, label=&#34;TP&#34;)
+    ]
+    axs[3].legend(handles=patches, loc=&#34;upper left&#34;)
+
+    # Remove x and y ticks
+    axs[3].xaxis.set_tick_params(labelbottom=False)
+    axs[3].yaxis.set_tick_params(labelleft=False)
+    axs[3].set_xticks([])
+    axs[3].set_yticks([])
+
+    axs[3].set_title(&#34;Predicted change map&#34;)
+
+    if title is None:
+        title = &#34;&#34;
+    else:
+        title = f&#34;{MODELS_NAMES_TO_TITLES.get(title, title)}&#34; + &#34;\n&#34;
+    title += f&#34;Change acc.: {cg_acc:.2f}\n&#34;
+    title += f&#34;No change acc.: {ncg_acc:.2f}\n&#34;
+    title += f&#34;Accuracy: {acc:.2f}\n&#34;
+    title += f&#34;F1-score: {f1:.2f}&#34;
+    fig.suptitle(title)
+
+    save_or_plot(
+        fig, savefig=savefig, results_dir=results_dir, filename_prefix=filename_prefix,
+        filename=filename
+    )</code></pre>
+</details>
+</dd>
+<dt id="src.utils.plotting.save_or_plot"><code class="name flex">
+<span>def <span class="ident">save_or_plot</span></span>(<span>fig, savefig=True, results_dir='results', filename_prefix='', filename='out.png')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save or plot given figure.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_or_plot(
+    fig,
+    savefig=True,
+    results_dir=&#34;results&#34;,
+    filename_prefix=&#34;&#34;,
+    filename=&#34;out.png&#34;
+):
+    &#34;&#34;&#34;Save or plot given figure.&#34;&#34;&#34;
+    if savefig:
+
+        results_dir_split = results_dir.split(&#34;/&#34;)
+
+        results_dir = &#34;&#34;
+
+        for spl in results_dir_split:
+
+            if len(results_dir) == 0:
+                results_dir = spl
+            else:
+                results_dir = f&#34;{results_dir}/{spl}&#34;
+
+            if not os.path.exists(results_dir):
+                os.makedirs(results_dir)
+
+        # Add prefix
+        if len(filename_prefix) &gt; 0:
+            filename = f&#34;{filename_prefix}_{filename}&#34;
+
+        # Create the results directory where data will be stored
+        fig.savefig(f&#34;{results_dir}/{filename}&#34;, facecolor=&#34;white&#34;)
+
+        # Clear figure
+        plt.close(fig)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.utils" href="index.html">src.utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.utils.plotting.evaluate" href="#src.utils.plotting.evaluate">evaluate</a></code></li>
+<li><code><a title="src.utils.plotting.plot_change_detection" href="#src.utils.plotting.plot_change_detection">plot_change_detection</a></code></li>
+<li><code><a title="src.utils.plotting.plot_model_predictions" href="#src.utils.plotting.plot_model_predictions">plot_model_predictions</a></code></li>
+<li><code><a title="src.utils.plotting.plot_reconstruction" href="#src.utils.plotting.plot_reconstruction">plot_reconstruction</a></code></li>
+<li><code><a title="src.utils.plotting.plot_summary" href="#src.utils.plotting.plot_summary">plot_summary</a></code></li>
+<li><code><a title="src.utils.plotting.save_or_plot" href="#src.utils.plotting.save_or_plot">save_or_plot</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

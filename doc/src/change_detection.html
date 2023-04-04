@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.change_detection API documentation</title>
+<meta name="description" content="Convolutional and Transformer models for change detection on satellite images." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.change_detection</code></h1>
+</header>
+<section id="section-intro">
+<p>Convolutional and Transformer models for change detection on satellite images.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Convolutional and Transformer models for change detection on satellite images.&#34;&#34;&#34;
+
+
+import argparse
+
+import torch
+from torch import nn
+from torch.utils.data import DataLoader
+from torchvision.transforms import Compose
+
+
+from datasets import OneraChangeDetectionDataset
+from datasets.transforms import RandomFlipPair, RandomRotPair
+from models import (
+    OmniMAEPair, FresUNet, OmniMAECNN, OmniMAEFresUNet, load_pretrained_model, train
+)
+from utils.misc import (
+    set_seed, get_device, str2bool, float_zero_one, create_if_no_dir, raise_if_no_dir
+)
+from utils.plotting import evaluate, plot_model_predictions
+
+
+def run(
+    seed=42,
+    bands_name=&#34;rgb&#34;,
+    patch_size=224,
+    normalize_imgs=True,
+    fp_modifier=10,
+    batch_size=12,
+    model_name=&#34;fresunet&#34;,
+    patch_shape=[2, 16, 16],
+    video_ordering=&#34;1221&#34;,
+    masking_method=&#34;none&#34;,
+    masking_proportion=0.5,
+    finetune=True,
+    checkpoints_dir=&#34;checkpoints&#34;,
+    load_checkpoint=False,
+    save_checkpoint=True,
+    n_epochs=50,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    window_size=4,
+    percentile=95,
+    savefig=True,
+    results_dir=&#34;results&#34;
+):
+    &#34;&#34;&#34;Train a model and compute change maps.&#34;&#34;&#34;
+    # Configuration
+    img_height = patch_size
+    img_width = patch_size
+
+    if masking_method == &#34;none&#34;:
+        masking_proportion = 0
+
+    set_seed(seed)
+    device = get_device()
+
+    # Prepare datasets
+    data_transform = Compose(
+        [
+            RandomFlipPair(proba_flip=0.5),
+            RandomRotPair(do_rotate=True),
+        ]
+    )
+
+    train_dataset = OneraChangeDetectionDataset(
+        train=True, transform=data_transform, bands_name=bands_name, patch_size=patch_size,
+        normalize_imgs=normalize_imgs, fp_modifier=fp_modifier
+    )
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+
+    test_dataset = OneraChangeDetectionDataset(
+        train=False, transform=data_transform, bands_name=bands_name, patch_size=patch_size,
+        normalize_imgs=normalize_imgs, fp_modifier=fp_modifier
+    )
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=4)
+
+    nb_channels = train_dataset.get_nb_channels()
+
+    # Prepare the network
+    if model_name == &#34;fresunet&#34;:
+
+        model = FresUNet(2*nb_channels, 2)
+
+    elif model_name == &#34;omnimae&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        model = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+    elif model_name == &#34;omnimaefresunet&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        omnimae_pair = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+        if finetune:
+
+            omnimae_pair.finetune_first_last_layers()
+
+        model = OmniMAEFresUNet(
+            2*nb_channels, 2, nb_channels=nb_channels, patch_shape=patch_shape,
+            img_height=img_height, img_width=img_width, omnimae_pair=omnimae_pair
+        )
+
+    elif model_name == &#34;omnimaecnn&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        omnimae_pair = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+        if finetune:
+
+            omnimae_pair.finetune_first_last_layers()
+
+        model = OmniMAECNN(
+            omnimae_pair, patch_shape=patch_shape, nb_channels=nb_channels, img_height=img_height,
+            img_width=img_width
+        )
+
+    else:
+
+        err_msg = f&#34;Unknown model {model_name}.&#34;
+        err_msg += &#34;&#34;&#34;Choose between &#34;fresunet&#34;, &#34;omnimae&#34; and &#34;omnimaefresunet&#34;.&#34;&#34;&#34;
+        raise ValueError(err_msg)
+
+    # Load checkpoint
+    if load_checkpoint:
+
+        raise_if_no_dir(checkpoints_dir)
+
+        model_filename = f&#34;{checkpoints_dir}/{model_name}_{bands_name}&#34;
+        if model_name in {&#34;omnimae&#34;, &#34;omnimaefresunet&#34;}:
+            model_filename += f&#34;_{video_ordering}&#34;
+        model_filename += &#34;.pth.tar&#34;
+
+        print(f&#34;Loading checkpoint {model_filename}&#34;)
+        model.load_state_dict(torch.load(model_filename))
+
+    # Move model to device
+    model.to(device)
+
+    # Start training
+    if model_name != &#34;omnimae&#34;:
+
+        weight = torch.FloatTensor(train_dataset.weights).cuda()
+        criterion = nn.NLLLoss(weight=weight)  # to be used with logsoftmax output
+
+        nb_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(&#34;Number of trainable parameters:&#34;, nb_params)
+
+        train(model, train_loader, criterion, device=device, n_epochs=n_epochs)
+
+    # Compute scores
+    test_results = evaluate(
+        model, model_name, test_loader, device=device, percentiles=percentiles,
+        clustering_components=clustering_components, clustering_threshold=clustering_threshold,
+        video_ordering=video_ordering, window_size=window_size, percentile=percentile
+    )
+
+    print(test_results)
+
+    # Plot model predictions
+    if savefig:
+
+        # _ = plot_model_predictions(
+        #     model, model_name, train_dataset, device=device, percentiles=percentiles,
+        #     clustering_components=clustering_components,
+        #     clustering_threshold=clustering_threshold, img_height=img_height,
+        #     img_width=img_width, bands_name=bands_name, video_ordering=video_ordering,
+        #     masking_method=masking_method, masking_proportion=masking_proportion,
+        #     window_size=window_size, percentile=percentile, results_dir=results_dir
+        # )
+        _ = plot_model_predictions(
+            model, model_name, test_dataset, device=device, percentiles=percentiles,
+            clustering_components=clustering_components, clustering_threshold=clustering_threshold,
+            img_height=img_height, img_width=img_width, bands_name=bands_name,
+            video_ordering=video_ordering, masking_method=masking_method,
+            masking_proportion=masking_proportion, window_size=window_size, percentile=percentile,
+            results_dir=results_dir
+        )
+
+    # Save checkpoints
+    if save_checkpoint:
+
+        create_if_no_dir(checkpoints_dir)
+
+        model_filename = f&#34;{checkpoints_dir}/{model_name}_{bands_name}&#34;
+        if model_name in {&#34;omnimae&#34;, &#34;omnimaefresunet&#34;}:
+            model_filename += f&#34;_{video_ordering}&#34;
+        model_filename += &#34;.pth.tar&#34;
+
+        torch.save(model.state_dict(), model_filename)
+
+        print(f&#34;Saving checkpoint {model_filename}&#34;)
+        model.load_state_dict(torch.load(model_filename))
+
+
+if __name__ == &#34;__main__&#34;:
+
+    # Command lines
+    PARSER_DESC = &#34;Main file to perform change detection of satellite images using OmniMAE.&#34;
+    PARSER = argparse.ArgumentParser(description=PARSER_DESC)
+
+    # Configuration
+    PARSER.add_argument(
+        &#34;--seed&#34;,
+        default=42,
+        type=int,
+        help=&#34;&#34;&#34;
+             Seed to use everywhere for reproducibility. Default: 42.
+             &#34;&#34;&#34;
+    )
+
+    # Data
+    PARSER.add_argument(
+        &#34;--bands-name&#34;,
+        default=&#34;rgb&#34;,
+        type=str,
+        help=&#34;&#34;&#34;
+             Name of the bands to use in the images. Choose from &#34;rgb&#34;, &#34;nir&#34;, &#34;res20&#34; and &#34;all&#34;.
+             Default: &#34;rgb&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--patch-size&#34;,
+        default=224,
+        type=int,
+        help=&#34;&#34;&#34;
+             Size of the cropped images for training. Models based on OmniMAE only support 224.
+             Default: 224.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--normalize&#34;,
+        default=&#34;True&#34;,
+        type=str2bool,
+        help=&#34;&#34;&#34;
+             If &#34;True&#34;, normalize input images. Default: &#34;True&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--fp-modifier&#34;,
+        default=10,
+        type=int,
+        help=&#34;&#34;&#34;
+             Should be used with caution. Default: 10.
+             &#34;&#34;&#34;
+    )
+
+    # Model
+    PARSER.add_argument(
+        &#34;--model-name&#34;,
+        default=&#34;fresunet&#34;,
+        type=str,
+        choices=[&#34;fresunet&#34;, &#34;omnimae&#34;, &#34;omnimaecnn&#34;, &#34;omnimaefresunet&#34;],
+        help=&#34;&#34;&#34;
+             Name of the model to use for change detection. Choose from &#34;fresunet&#34;, &#34;omnimae&#34;,
+             &#34;omnimaecnn&#34; and &#34;omnimaefresunet&#34;. Default &#34;fresunet&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--video-ordering&#34;,
+        default=&#34;1221&#34;,
+        type=str,
+        help=&#34;&#34;&#34;
+             For a given pair of images, where &#34;1&#34; designates the first one and &#34;2&#34; the last one,
+             define a sequence of repeated images to be fed to the OmniMAE model as a video.
+             only used for OmniMAE models.
+             Default: &#34;1221&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--masking-method&#34;,
+        default=&#34;none&#34;,
+        type=str,
+        help=&#34;&#34;&#34;
+             Masking method, either &#34;random&#34;, &#34;complementary&#34; or &#34;none&#34; to mask out the whole
+             images. When method is &#34;random&#34; or &#34;complementary&#34;, set the proportion of masked
+             patches (for &#34;complementary&#34;, in the first image) using the `--masking-proportion`
+             argument. Default: &#34;none&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--masking-proportion&#34;,
+        default=0.5,
+        type=float_zero_one,
+        help=&#34;&#34;&#34;
+             When `--masking-method` is set to &#34;random&#34; or &#34;complementary&#34;, set the proportion of
+             masked patches, i.e. the proportion of patches which are not fed to the model.
+             Default: 0.5.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--finetune&#34;,
+        default=&#34;True&#34;,
+        type=str2bool,
+        help=&#34;&#34;&#34;
+             If &#34;True&#34;, finetune first and last layers of OmniMAE. Default: &#34;True&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--checkpoints-dir&#34;,
+        default=&#34;checkpoints&#34;,
+        type=str,
+        help=&#34;&#34;&#34;
+             Name of the directory where checkpoints are loaded and / or saved.
+             Default: &#34;checkpoints&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--load-checkpoint&#34;,
+        default=&#34;False&#34;,
+        type=str2bool,
+        help=&#34;&#34;&#34;
+             If &#34;True&#34;, load checkpoint from disk. Default: &#34;False&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--save-checkpoint&#34;,
+        default=&#34;True&#34;,
+        type=str2bool,
+        help=&#34;&#34;&#34;
+             If &#34;True&#34;, save checkpoint to disk. Default: &#34;True&#34;.
+             &#34;&#34;&#34;
+    )
+
+    # Training
+    PARSER.add_argument(
+        &#34;--batch-size&#34;,
+        default=12,
+        type=int,
+        help=&#34;&#34;&#34;
+             Batch size for training the model. Default: 12.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--epochs&#34;,
+        default=50,
+        type=int,
+        help=&#34;&#34;&#34;
+             Number of training epochs. Default: 50.
+             &#34;&#34;&#34;
+    )
+
+    # Save
+    PARSER.add_argument(
+        &#34;--savefig&#34;,
+        default=&#34;True&#34;,
+        type=str2bool,
+        help=&#34;&#34;&#34;
+             If &#34;True&#34;, figures will be saved on disk. Default: &#34;True&#34;.
+             &#34;&#34;&#34;
+    )
+
+    PARSER.add_argument(
+        &#34;--results-dir&#34;,
+        default=&#34;results&#34;,
+        type=str,
+        help=&#34;&#34;&#34;
+             Name of the directory where figures are stored. Default: &#34;results&#34;.
+             &#34;&#34;&#34;
+    )
+
+    # End of command lines
+    ARGS = PARSER.parse_args()
+
+    # Run training
+    run(
+        seed=ARGS.seed,
+        bands_name=ARGS.bands_name,
+        patch_size=ARGS.patch_size,
+        normalize_imgs=ARGS.normalize,
+        fp_modifier=ARGS.fp_modifier,
+        batch_size=ARGS.batch_size,
+        model_name=ARGS.model_name,
+        video_ordering=ARGS.video_ordering,
+        masking_method=ARGS.masking_method,
+        masking_proportion=ARGS.masking_proportion,
+        finetune=ARGS.finetune,
+        checkpoints_dir=ARGS.checkpoints_dir,
+        load_checkpoint=ARGS.load_checkpoint,
+        save_checkpoint=ARGS.save_checkpoint,
+        n_epochs=ARGS.epochs,
+        savefig=ARGS.savefig,
+        results_dir=ARGS.results_dir
+    )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.change_detection.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>seed=42, bands_name='rgb', patch_size=224, normalize_imgs=True, fp_modifier=10, batch_size=12, model_name='fresunet', patch_shape=[2, 16, 16], video_ordering='1221', masking_method='none', masking_proportion=0.5, finetune=True, checkpoints_dir='checkpoints', load_checkpoint=False, save_checkpoint=True, n_epochs=50, percentiles=0.5, clustering_components=3, clustering_threshold=100, window_size=4, percentile=95, savefig=True, results_dir='results')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Train a model and compute change maps.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(
+    seed=42,
+    bands_name=&#34;rgb&#34;,
+    patch_size=224,
+    normalize_imgs=True,
+    fp_modifier=10,
+    batch_size=12,
+    model_name=&#34;fresunet&#34;,
+    patch_shape=[2, 16, 16],
+    video_ordering=&#34;1221&#34;,
+    masking_method=&#34;none&#34;,
+    masking_proportion=0.5,
+    finetune=True,
+    checkpoints_dir=&#34;checkpoints&#34;,
+    load_checkpoint=False,
+    save_checkpoint=True,
+    n_epochs=50,
+    percentiles=0.5,
+    clustering_components=3,
+    clustering_threshold=100,
+    window_size=4,
+    percentile=95,
+    savefig=True,
+    results_dir=&#34;results&#34;
+):
+    &#34;&#34;&#34;Train a model and compute change maps.&#34;&#34;&#34;
+    # Configuration
+    img_height = patch_size
+    img_width = patch_size
+
+    if masking_method == &#34;none&#34;:
+        masking_proportion = 0
+
+    set_seed(seed)
+    device = get_device()
+
+    # Prepare datasets
+    data_transform = Compose(
+        [
+            RandomFlipPair(proba_flip=0.5),
+            RandomRotPair(do_rotate=True),
+        ]
+    )
+
+    train_dataset = OneraChangeDetectionDataset(
+        train=True, transform=data_transform, bands_name=bands_name, patch_size=patch_size,
+        normalize_imgs=normalize_imgs, fp_modifier=fp_modifier
+    )
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+
+    test_dataset = OneraChangeDetectionDataset(
+        train=False, transform=data_transform, bands_name=bands_name, patch_size=patch_size,
+        normalize_imgs=normalize_imgs, fp_modifier=fp_modifier
+    )
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=4)
+
+    nb_channels = train_dataset.get_nb_channels()
+
+    # Prepare the network
+    if model_name == &#34;fresunet&#34;:
+
+        model = FresUNet(2*nb_channels, 2)
+
+    elif model_name == &#34;omnimae&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        model = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+    elif model_name == &#34;omnimaefresunet&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        omnimae_pair = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+        if finetune:
+
+            omnimae_pair.finetune_first_last_layers()
+
+        model = OmniMAEFresUNet(
+            2*nb_channels, 2, nb_channels=nb_channels, patch_shape=patch_shape,
+            img_height=img_height, img_width=img_width, omnimae_pair=omnimae_pair
+        )
+
+    elif model_name == &#34;omnimaecnn&#34;:
+
+        omnimae_base = load_pretrained_model(device=device)
+
+        omnimae_pair = OmniMAEPair(
+            omnimae_base, video_ordering=video_ordering, patch_shape=patch_shape,
+            nb_channels=nb_channels, masking_method=masking_method,
+            masking_proportion=masking_proportion, img_height=img_height, img_width=img_width
+        )
+
+        if finetune:
+
+            omnimae_pair.finetune_first_last_layers()
+
+        model = OmniMAECNN(
+            omnimae_pair, patch_shape=patch_shape, nb_channels=nb_channels, img_height=img_height,
+            img_width=img_width
+        )
+
+    else:
+
+        err_msg = f&#34;Unknown model {model_name}.&#34;
+        err_msg += &#34;&#34;&#34;Choose between &#34;fresunet&#34;, &#34;omnimae&#34; and &#34;omnimaefresunet&#34;.&#34;&#34;&#34;
+        raise ValueError(err_msg)
+
+    # Load checkpoint
+    if load_checkpoint:
+
+        raise_if_no_dir(checkpoints_dir)
+
+        model_filename = f&#34;{checkpoints_dir}/{model_name}_{bands_name}&#34;
+        if model_name in {&#34;omnimae&#34;, &#34;omnimaefresunet&#34;}:
+            model_filename += f&#34;_{video_ordering}&#34;
+        model_filename += &#34;.pth.tar&#34;
+
+        print(f&#34;Loading checkpoint {model_filename}&#34;)
+        model.load_state_dict(torch.load(model_filename))
+
+    # Move model to device
+    model.to(device)
+
+    # Start training
+    if model_name != &#34;omnimae&#34;:
+
+        weight = torch.FloatTensor(train_dataset.weights).cuda()
+        criterion = nn.NLLLoss(weight=weight)  # to be used with logsoftmax output
+
+        nb_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(&#34;Number of trainable parameters:&#34;, nb_params)
+
+        train(model, train_loader, criterion, device=device, n_epochs=n_epochs)
+
+    # Compute scores
+    test_results = evaluate(
+        model, model_name, test_loader, device=device, percentiles=percentiles,
+        clustering_components=clustering_components, clustering_threshold=clustering_threshold,
+        video_ordering=video_ordering, window_size=window_size, percentile=percentile
+    )
+
+    print(test_results)
+
+    # Plot model predictions
+    if savefig:
+
+        # _ = plot_model_predictions(
+        #     model, model_name, train_dataset, device=device, percentiles=percentiles,
+        #     clustering_components=clustering_components,
+        #     clustering_threshold=clustering_threshold, img_height=img_height,
+        #     img_width=img_width, bands_name=bands_name, video_ordering=video_ordering,
+        #     masking_method=masking_method, masking_proportion=masking_proportion,
+        #     window_size=window_size, percentile=percentile, results_dir=results_dir
+        # )
+        _ = plot_model_predictions(
+            model, model_name, test_dataset, device=device, percentiles=percentiles,
+            clustering_components=clustering_components, clustering_threshold=clustering_threshold,
+            img_height=img_height, img_width=img_width, bands_name=bands_name,
+            video_ordering=video_ordering, masking_method=masking_method,
+            masking_proportion=masking_proportion, window_size=window_size, percentile=percentile,
+            results_dir=results_dir
+        )
+
+    # Save checkpoints
+    if save_checkpoint:
+
+        create_if_no_dir(checkpoints_dir)
+
+        model_filename = f&#34;{checkpoints_dir}/{model_name}_{bands_name}&#34;
+        if model_name in {&#34;omnimae&#34;, &#34;omnimaefresunet&#34;}:
+            model_filename += f&#34;_{video_ordering}&#34;
+        model_filename += &#34;.pth.tar&#34;
+
+        torch.save(model.state_dict(), model_filename)
+
+        print(f&#34;Saving checkpoint {model_filename}&#34;)
+        model.load_state_dict(torch.load(model_filename))</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src" href="index.html">src</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.change_detection.run" href="#src.change_detection.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
